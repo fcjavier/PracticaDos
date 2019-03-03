@@ -6,6 +6,7 @@
 package carreras.gui;
 
 import carreras.dto.Carrera;
+import carreras.logica.LogicaCarreras;
 import carreras.tableModel.ParticipantesTableModel;
 import corredores.dto.Participante;
 import java.util.ArrayList;

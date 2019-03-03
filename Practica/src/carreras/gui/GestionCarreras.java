@@ -43,7 +43,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         initComponents();
         this.setTitle(" GESTIÓN DE CARRERAS");
         cargarTableModelCarreras();
-
+       // cargarTableModelCarrerasFinalizadas();
     }
 
     public void cargarTableModelCarreras() {
@@ -55,7 +55,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,7 +77,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         jToggleButtonAgregarCorredor = new javax.swing.JToggleButton();
         jToggleButtonAnularCorredores = new javax.swing.JToggleButton();
         jToggleButtonVerParticipantes = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButtonIniciarCarrera = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -153,11 +153,11 @@ public class GestionCarreras extends javax.swing.JDialog {
             }
         });
 
-        jToggleButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jToggleButton1.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jToggleButton1.text")); // NOI18N
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonIniciarCarrera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jToggleButtonIniciarCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jToggleButtonIniciarCarrera.text")); // NOI18N
+        jToggleButtonIniciarCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jToggleButtonIniciarCarreraActionPerformed(evt);
             }
         });
 
@@ -168,7 +168,7 @@ public class GestionCarreras extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButtonIniciarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -211,7 +211,7 @@ public class GestionCarreras extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToggleButtonFiltrar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton1)
+                .addComponent(jToggleButtonIniciarCarrera)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -354,7 +354,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jToggleButtonVerParticipantesActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jToggleButtonIniciarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarCarreraActionPerformed
            try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
@@ -365,7 +365,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_jToggleButtonIniciarCarreraActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -374,11 +374,11 @@ public class GestionCarreras extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCarreras;
     private javax.swing.JTextField jTextFieldFiltrar;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButtonAgregarCorredor;
     private javax.swing.JToggleButton jToggleButtonAnularCorredores;
     private javax.swing.JToggleButton jToggleButtonBajaCarrera;
     private javax.swing.JToggleButton jToggleButtonFiltrar;
+    private javax.swing.JToggleButton jToggleButtonIniciarCarrera;
     private javax.swing.JToggleButton jToggleButtonModificar;
     private javax.swing.JToggleButton jToggleButtonNuevaCarrera;
     private javax.swing.JToggleButton jToggleButtonVerParticipantes;

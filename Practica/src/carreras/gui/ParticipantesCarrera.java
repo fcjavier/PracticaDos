@@ -7,6 +7,7 @@ package carreras.gui;
 
 import carreras.dto.Carrera;
 import carreras.tableModel.ParticipantesTableModel;
+import corredores.dto.Corredor;
 import corredores.dto.Participante;
 import java.util.ArrayList;
 import java.util.List;
@@ -194,8 +195,12 @@ public class ParticipantesCarrera extends javax.swing.JDialog {
             int confirmacion = JOptionPane.showConfirmDialog(this, "Desea eliminar al corredor\n"
                     + participante.getNomParticipante(), "ELIMINAR CORREDOR", JOptionPane.YES_NO_OPTION);
             if (confirmacion == JOptionPane.YES_OPTION) {
+                Corredor corredor = participante.getCorredor();
+                if(corredor.getInscripciones().contains(carrera)){
+                corredor.getInscripciones().remove(carrera);
+                }
                 String dorsal = participante.getDorsal();
-                carrera.getListaDorsales().add(Integer.valueOf(dorsal));
+                carrera.getListaDorsales().add(Integer.valueOf(dorsal));            
                 boolean s = carrera.getListaParticipantes().remove(participante);
                 if (s == true) {
                     JOptionPane.showMessageDialog(this, "Participante eliminado");

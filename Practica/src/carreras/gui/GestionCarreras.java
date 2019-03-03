@@ -43,7 +43,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         initComponents();
         this.setTitle(" GESTIÓN DE CARRERAS");
         cargarTableModelCarreras();
-       // cargarTableModelCarrerasFinalizadas();
+        // cargarTableModelCarrerasFinalizadas();
     }
 
     public void cargarTableModelCarreras() {
@@ -55,7 +55,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -302,22 +302,27 @@ public class GestionCarreras extends javax.swing.JDialog {
     private void jToggleButtonAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonAgregarCorredorActionPerformed
         try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
-            if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
-                if (seleccion >= 0) {
-                    int opcion = JOptionPane.showConfirmDialog(this, "EXISTE EL CORREDOR", "", JOptionPane.YES_NO_OPTION);
-                    if (opcion == JOptionPane.YES_OPTION) {
-                        Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
-                        CorredoresParaCarrera cpc = new CorredoresParaCarrera(paginaPrincipal, true, carrera);
-                        cpc.setVisible(true);
+            Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
+            if (carrera.getListaParticipantes().size() < carrera.getMaxParticipantes()) {
+                if (!carrera.isIniciada()) {
+                    if (seleccion >= 0) {
+                        int opcion = JOptionPane.showConfirmDialog(this, "EXISTE EL CORREDOR", "", JOptionPane.YES_NO_OPTION);
+                        if (opcion == JOptionPane.YES_OPTION) {
+                            //Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
+                            CorredoresParaCarrera cpc = new CorredoresParaCarrera(paginaPrincipal, true, carrera);
+                            cpc.setVisible(true);
+                        }
+                        if (opcion == JOptionPane.NO_OPTION) {
+                            DatosCorredor datosCorredor = new DatosCorredor(paginaPrincipal, true);
+                            datosCorredor.setVisible(true);
+                        }
                     }
-                    if (opcion == JOptionPane.NO_OPTION) {
-                        DatosCorredor datosCorredor = new DatosCorredor(paginaPrincipal, true);
-                        datosCorredor.setVisible(true);
-                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se puede agregar corredores\n"
+                            + "la carrera está iniciada", "", JOptionPane.INFORMATION_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "No se puede agregar corredores\n"
-                        + "la carrera está iniciada", "", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "La carrera está completa\nno se pueden agregar corredores");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
@@ -339,23 +344,23 @@ public class GestionCarreras extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
+        jTableCarreras.clearSelection();
     }//GEN-LAST:event_jToggleButtonAnularCorredoresActionPerformed
 
     private void jToggleButtonVerParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonVerParticipantesActionPerformed
         try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
-            if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
-                Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
-                ParticipantesCarrera participantesCarrera = new ParticipantesCarrera(paginaPrincipal, true, carrera, false);
-                participantesCarrera.setVisible(true);
-            }
+            Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
+            ParticipantesCarrera participantesCarrera = new ParticipantesCarrera(paginaPrincipal, true, carrera, false);
+            participantesCarrera.setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
+        jTableCarreras.clearSelection();
     }//GEN-LAST:event_jToggleButtonVerParticipantesActionPerformed
 
     private void jToggleButtonIniciarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarCarreraActionPerformed
-           try {
+        try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
                 Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
@@ -365,6 +370,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
+        jTableCarreras.clearSelection();
     }//GEN-LAST:event_jToggleButtonIniciarCarreraActionPerformed
 
 

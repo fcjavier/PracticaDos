@@ -1,5 +1,6 @@
 package corredores.logica;
 
+import carreras.dto.Carrera;
 import corredores.dto.Corredor;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,4 +82,8 @@ public class LogicaCorredor {
     public boolean bajaCorredor(Corredor c) {
         return listaCorredores.remove(c);
     }
+    /*
+    public static void agregarCarreraACorredor(Carrera carrera,Corredor corredor){
+        corredor.getInscripciones().add(carrera);
+    }*/
 }

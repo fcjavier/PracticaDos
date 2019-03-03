@@ -34,7 +34,7 @@ public class ParticipantesTableModel extends AbstractTableModel{
              case 1: 
                  return lista.get(row).getDorsal();
              case 2:
-                 return lista.get(row).getTiempo();
+                 return lista.get(row).getTiempo();             
          }
          return null;
     }

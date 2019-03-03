@@ -26,6 +26,7 @@ public class CorredoresParaCarrera extends javax.swing.JDialog {
     PaginaPrincipal paginaPrincipal;
     Carrera carrera;
     LogicaFicherosCSV lf = new LogicaFicherosCSV();
+
     /**
      * Creates new form CorredoresParaCarrera
      *
@@ -51,7 +52,23 @@ public class CorredoresParaCarrera extends javax.swing.JDialog {
         sortkeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortkeys);
     }
-     
+
+    /**
+     * Método para comprobar si el corredor ya está inscrito en la carrera.
+     *
+     * @param carrera
+     * @param corredor
+     * @return boolean
+     */
+    public boolean comprobarInscripcion(Carrera carrera, Corredor corredor) {
+        boolean existe = false;
+        for (Participante p : carrera.getListaParticipantes()) {
+            if (p.getCorredor().getDni().equals(corredor.getDni())) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -188,18 +205,25 @@ public class CorredoresParaCarrera extends javax.swing.JDialog {
         try {
             int seleccion = jTableCorredorParaCarrera.convertRowIndexToModel(jTableCorredorParaCarrera.getSelectedRow());
             Corredor corredor = LogicaCorredor.getListaCorredores().get(seleccion);
-            Participante participante = new Participante(corredor.getNombre());
-            int dor = carrera.getListaDorsales().get(0);
-            carrera.getListaDorsales().remove(0);
-            participante.setDorsal(String.valueOf(dor));
-            if (!carrera.getListaParticipantes().contains(participante)) {
-                carrera.getListaParticipantes().add(participante);
-                JOptionPane.showMessageDialog(this, "Asignado dorsal: " + dor);
-                String ruta = "ficheros/participantes/"+carrera.getNomCarrera()+".csv";
-                lf.abrirFicheroCSVEscrituraParticipantes(ruta, carrera.getListaParticipantes());
-                corredor.getInscripciones().add(carrera);
+            if (carrera.getListaParticipantes().size() == carrera.getMaxParticipantes()) {
+                JOptionPane.showMessageDialog(this, "La carrera está completa\nno se pueden agregar corredores");
             } else {
-                JOptionPane.showMessageDialog(this, "El corredor ya está inscrito", "", JOptionPane.WARNING_MESSAGE);
+                //Participante participante = new Participante(corredor);
+                // if (!carrera.getListaParticipantes().contains(participante)) {
+                if (!comprobarInscripcion(carrera, corredor)) {
+                    // LogicaCorredor.agregarCarreraACorredor(carrera, corredor);
+                    Participante participante = new Participante(corredor);
+                    int dor = carrera.getListaDorsales().get(0);
+                    carrera.getListaDorsales().remove(0);
+                    participante.setDorsal(String.valueOf(dor));
+                    carrera.getListaParticipantes().add(participante);
+                    JOptionPane.showMessageDialog(this, "Asignado dorsal: " + dor);
+                    String ruta = "ficheros/participantes/" + carrera.getNomCarrera() + ".csv";
+                    lf.abrirFicheroCSVEscrituraParticipantes(ruta, carrera.getListaParticipantes());
+                    corredor.getInscripciones().add(carrera);
+                } else {
+                    JOptionPane.showMessageDialog(this, "El corredor ya está inscrito", "", JOptionPane.WARNING_MESSAGE);
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor");
@@ -208,7 +232,7 @@ public class CorredoresParaCarrera extends javax.swing.JDialog {
     }//GEN-LAST:event_jToggleButtonAgregarCorredorActionPerformed
 
     private void jToggleButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonSalirActionPerformed
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jToggleButtonSalirActionPerformed
 
 

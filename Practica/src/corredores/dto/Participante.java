@@ -9,7 +9,8 @@ import java.io.Serializable;
 public class Participante implements Serializable {
 
     //Atributos
-    private String nomParticipante;
+    private Corredor corredor;
+    private String nombre;
     private String dorsal;
     private String tiempo;
 
@@ -17,21 +18,21 @@ public class Participante implements Serializable {
     public Participante() {
     }
 
-    public Participante(String nomParticipante) {
-        this.nomParticipante = nomParticipante;
+    public Participante(Corredor corredor) {
+        this.corredor = corredor;
         this.dorsal = "";
         this.tiempo = "";
     }
 
     //Getters and Setters
     public String getNomParticipante() {
-        return nomParticipante;
+        return corredor.getNombre();
     }
 
-    public void setNomParticipante(String nomParticipante) {
-        this.nomParticipante = nomParticipante;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
+    
     public String getDorsal() {
         return dorsal;
     }
@@ -48,9 +49,18 @@ public class Participante implements Serializable {
         this.tiempo = tiempo;
     }
 
+    public Corredor getCorredor() {
+        return corredor;
+    }
+
+    public void setCorredor(Corredor corredor) {
+        this.corredor = corredor;
+    }
+    
+ 
     @Override
     public String toString() {
-        return "Participante: nombre= " + nomParticipante + ", dorsal= " + dorsal + ", tiempo= " + tiempo;
+        return "Participante: nombre= " + corredor.getNombre()+ ", dorsal= " + dorsal + ", tiempo= " + tiempo;
     }
 
 }

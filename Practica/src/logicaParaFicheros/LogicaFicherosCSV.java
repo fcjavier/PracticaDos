@@ -229,7 +229,8 @@ public class LogicaFicherosCSV {
             String dorsal = st.nextToken();
             String tiempo = st.nextToken();
             int max = Integer.parseInt(st.nextToken());
-            p = new Participante(nombre);
+            p = new Participante();
+            p.setNombre(nombre);
             p.setDorsal(dorsal);
             p.setTiempo(tiempo);
         }

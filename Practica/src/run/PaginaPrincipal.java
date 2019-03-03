@@ -11,6 +11,7 @@ import corredores.gui.GestionCorredores;
 import corredores.logica.LogicaCorredor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import logicaParaFicheros.LogicaFicherosCSV;
@@ -35,17 +36,22 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         cerrar();
     }
     public void cargarFicheros(){
-        
+        File fCorredores = new File("ficheros/corredores.dat");
+        File fCarreras = new File("ficheros/carreras.dat");
         //lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("ficheros/corredor.csv"));
        //logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("ficheros/carreras.csv"));
+       if(fCorredores.exists()){
        lc.cargarListaCorredor(lfo.abrirFicheroLecturaCorredores("ficheros/corredores.dat"));
+       }
+       if(fCarreras.exists()){
        logCarrera.cargarListaCarreras(lfo.abrirFicheroLecturaObjetos("ficheros/carreras.dat"));
+       }
     }
 
     
     public void guardarDatos(){
-        lf.abrirFicheroCSVEscrituraCorredor("corredor.csv",LogicaCorredor.getListaCorredores());
-        lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", LogicaCarreras.getListaCarreras());
+        lf.abrirFicheroCSVEscrituraCorredor("ficheros/corredor.csv",LogicaCorredor.getListaCorredores());
+        lf.abrirFicheroCSVEscrituraCarrera("ficheros/carreras.csv", LogicaCarreras.getListaCarreras());
         lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/carreras.dat", LogicaCarreras.getListaCarreras());
         lfo.abrirFicheroObjetosEscrituraCorredores("ficheros/corredores.dat", LogicaCorredor.getListaCorredores());
     }

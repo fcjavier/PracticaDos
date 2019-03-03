@@ -40,7 +40,7 @@ public class CarrerasTableModel extends AbstractTableModel {
                   return listaCarreras.get(row).getMaxParticipantes();
               case 4:
                   if(listaCarreras.get(row).isIniciada()){
-                      return "Iniciada";
+                      return "Finalizada";
                   }else
                       return "Sin iniciar";
           }

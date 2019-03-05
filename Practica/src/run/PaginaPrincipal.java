@@ -38,6 +38,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     public void cargarFicheros(){
         File fCorredores = new File("ficheros/corredores.dat");
         File fCarreras = new File("ficheros/carreras.dat");
+        File fFinalizadas = new File("ficheros/finalizadas.dat");
         //lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("ficheros/corredor.csv"));
        //logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("ficheros/carreras.csv"));
        if(fCorredores.exists()){
@@ -45,6 +46,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
        }
        if(fCarreras.exists()){
        logCarrera.cargarListaCarreras(lfo.abrirFicheroLecturaObjetos("ficheros/carreras.dat"));
+       }
+       if(fFinalizadas.exists()){
+       LogicaCarreras.cargarFinalizadas(lfo.abrirFicheroLecturaObjetos("ficheros/finalizadas.dat"));
        }
     }
 
@@ -54,6 +58,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         lf.abrirFicheroCSVEscrituraCarrera("ficheros/carreras.csv", LogicaCarreras.getListaCarreras());
         lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/carreras.dat", LogicaCarreras.getListaCarreras());
         lfo.abrirFicheroObjetosEscrituraCorredores("ficheros/corredores.dat", LogicaCorredor.getListaCorredores());
+        lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/finalizadas.dat",LogicaCarreras.getListaCarrerasFinalizadas());
     }
         public void cerrar() {
         try {

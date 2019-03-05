@@ -24,7 +24,7 @@ public class LogicaCarreras {
     }
 
     public void cargarListaCarreras(List<Carrera> lista) {
-        this.listaCarreras = lista;
+        LogicaCarreras.listaCarreras = lista;
     }
 
     public void eliminarCarrera(Carrera carrera) {
@@ -35,6 +35,10 @@ public class LogicaCarreras {
 
     public static boolean agregarCarreraFinalizada(Carrera carrera) {
         return carrerasFinalizadas.add(carrera);
+    }
+
+    public static void cargarFinalizadas(List<Carrera> finalizadas) {
+        LogicaCarreras.carrerasFinalizadas = finalizadas;
     }
 
     public static List<Carrera> getListaCarrerasFinalizadas() {

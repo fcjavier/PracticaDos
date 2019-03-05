@@ -42,11 +42,12 @@ public class GestionCarreras extends javax.swing.JDialog {
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
         this.setTitle(" GESTIÓN DE CARRERAS");
-        cargarTableModelCarreras();
+        cargarTableCarreras();
+        cargarTableFinalizadas();
         // cargarTableModelCarrerasFinalizadas();
     }
 
-    public void cargarTableModelCarreras() {
+    public void cargarTableCarreras() {
         ctm = new CarrerasTableModel(LogicaCarreras.getListaCarreras());
         jTableCarreras.setModel(ctm);
         sorter = new TableRowSorter<>(ctm);
@@ -55,7 +56,15 @@ public class GestionCarreras extends javax.swing.JDialog {
         sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
     }
-
+    public void cargarTableFinalizadas() {
+        ctm = new CarrerasTableModel(LogicaCarreras.getListaCarrerasFinalizadas());
+        jTableFinalizadas.setModel(ctm);
+        sorter = new TableRowSorter<>(ctm);
+        jTableFinalizadas.setRowSorter(sorter);
+        List<SortKey> sortKeys = new ArrayList<SortKey>();
+        sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +87,8 @@ public class GestionCarreras extends javax.swing.JDialog {
         jToggleButtonAnularCorredores = new javax.swing.JToggleButton();
         jToggleButtonVerParticipantes = new javax.swing.JToggleButton();
         jToggleButtonIniciarCarrera = new javax.swing.JToggleButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableFinalizadas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -161,6 +172,19 @@ public class GestionCarreras extends javax.swing.JDialog {
             }
         });
 
+        jTableFinalizadas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableFinalizadas);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -168,8 +192,6 @@ public class GestionCarreras extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButtonIniciarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jToggleButtonNuevaCarrera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
@@ -180,18 +202,26 @@ public class GestionCarreras extends javax.swing.JDialog {
                             .addComponent(jToggleButtonAgregarCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jToggleButtonAnularCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jToggleButtonVerParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxFiltrar, 0, 129, Short.MAX_VALUE)
-                            .addComponent(jTextFieldFiltrar)
-                            .addComponent(jToggleButtonFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jComboBoxFiltrar, 0, 129, Short.MAX_VALUE)
+                                .addComponent(jTextFieldFiltrar))
+                            .addComponent(jToggleButtonFiltrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jToggleButtonIniciarCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButtonNuevaCarrera)
                     .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,16 +231,12 @@ public class GestionCarreras extends javax.swing.JDialog {
                     .addComponent(jToggleButtonBajaCarrera)
                     .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButtonAnularCorredores))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jToggleButtonModificar)
-                            .addComponent(jToggleButtonVerParticipantes)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButtonFiltrar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButtonModificar)
+                    .addComponent(jToggleButtonVerParticipantes)
+                    .addComponent(jToggleButtonFiltrar))
+                .addGap(18, 18, 18)
                 .addComponent(jToggleButtonIniciarCarrera)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -221,8 +247,7 @@ public class GestionCarreras extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +281,7 @@ public class GestionCarreras extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(this, "Error al eliminar", "ERROR", JOptionPane.ERROR);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "CARRERA INICIADA", "", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "CARRERA INICIADA O FINALIZADA", "", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado carrera", "", JOptionPane.INFORMATION_MESSAGE);
@@ -301,6 +326,8 @@ public class GestionCarreras extends javax.swing.JDialog {
 
     private void jToggleButtonAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonAgregarCorredorActionPerformed
         try {
+            boolean foco=jTableCarreras.isFocusOwner();
+            System.out.println(foco);
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
             if (carrera.getListaParticipantes().size() < carrera.getMaxParticipantes()) {
@@ -319,9 +346,9 @@ public class GestionCarreras extends javax.swing.JDialog {
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "No se puede agregar corredores\n"
-                            + "la carrera está iniciada", "", JOptionPane.INFORMATION_MESSAGE);
+                            + "la carrera está iniciada o finalizada", "", JOptionPane.INFORMATION_MESSAGE);
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "La carrera está completa\nno se pueden agregar corredores");
             }
         } catch (Exception e) {
@@ -339,7 +366,7 @@ public class GestionCarreras extends javax.swing.JDialog {
                 participantesCarrera.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "No se puede anular corredores\n"
-                        + "la carrera está iniciada", "", JOptionPane.INFORMATION_MESSAGE);
+                        + "la carrera está iniciada o finalizada", "", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
@@ -366,6 +393,8 @@ public class GestionCarreras extends javax.swing.JDialog {
                 Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
                 CarreraEnCurso carreraEnCurso = new CarreraEnCurso(paginaPrincipal, true, carrera);
                 carreraEnCurso.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "CARRERA YA INICIADA O FINALIZADA", "", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
@@ -378,7 +407,9 @@ public class GestionCarreras extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jComboBoxFiltrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableCarreras;
+    private javax.swing.JTable jTableFinalizadas;
     private javax.swing.JTextField jTextFieldFiltrar;
     private javax.swing.JToggleButton jToggleButtonAgregarCorredor;
     private javax.swing.JToggleButton jToggleButtonAnularCorredores;

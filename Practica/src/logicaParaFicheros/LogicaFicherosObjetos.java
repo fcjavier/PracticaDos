@@ -26,6 +26,7 @@ public class LogicaFicherosObjetos {
             for (Carrera o : obj) {
                 salida.writeObject(o);
             }
+            salida.close();
         } catch (FileNotFoundException ex) {
             Exceptions.printStackTrace(ex);
         } catch (IOException ex) {
@@ -58,9 +59,10 @@ public class LogicaFicherosObjetos {
         File f = new File(fichero);
         try {
             ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(f));
-            for (Corredor o : obj) {
-                salida.writeObject(o);
+            for (Corredor c : obj) {
+                salida.writeObject(c);
             }
+            salida.close();
         } catch (FileNotFoundException ex) {
             Exceptions.printStackTrace(ex);
         } catch (IOException ex) {

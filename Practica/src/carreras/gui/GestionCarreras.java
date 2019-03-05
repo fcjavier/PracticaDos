@@ -27,6 +27,7 @@ public class GestionCarreras extends javax.swing.JDialog {
 
     CarrerasTableModel ctm;
     TableRowSorter<CarrerasTableModel> sorter;
+    TableRowSorter<CarrerasTableModel> sorter2;
     PaginaPrincipal paginaPrincipal;
     LogicaFicherosCSV lf = new LogicaFicherosCSV();
     // LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
@@ -56,15 +57,17 @@ public class GestionCarreras extends javax.swing.JDialog {
         sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
     }
+
     public void cargarTableFinalizadas() {
         ctm = new CarrerasTableModel(LogicaCarreras.getListaCarrerasFinalizadas());
         jTableFinalizadas.setModel(ctm);
-        sorter = new TableRowSorter<>(ctm);
-        jTableFinalizadas.setRowSorter(sorter);
+        sorter2 = new TableRowSorter<>(ctm);
+        jTableFinalizadas.setRowSorter(sorter2);
         List<SortKey> sortKeys = new ArrayList<SortKey>();
         sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
-        sorter.setSortKeys(sortKeys);
+        sorter2.setSortKeys(sortKeys);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,6 +92,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         jToggleButtonIniciarCarrera = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableFinalizadas = new javax.swing.JTable();
+        jComboBoxTablas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,6 +107,14 @@ public class GestionCarreras extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableCarreras.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTableCarrerasFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTableCarrerasFocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableCarreras);
 
         jToggleButtonNuevaCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jToggleButtonNuevaCarrera.text")); // NOI18N
@@ -183,7 +195,15 @@ public class GestionCarreras extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableFinalizadas.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTableFinalizadasFocusGained(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableFinalizadas);
+
+        jComboBoxTablas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBoxTablas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtrar Tabla...", "Sin iniciar", "Finalizadas" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,11 +222,14 @@ public class GestionCarreras extends javax.swing.JDialog {
                             .addComponent(jToggleButtonAgregarCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jToggleButtonAnularCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jToggleButtonVerParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBoxFiltrar, 0, 129, Short.MAX_VALUE)
-                                .addComponent(jTextFieldFiltrar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jComboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxFiltrar, 0, 129, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldFiltrar)))
                             .addComponent(jToggleButtonFiltrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,7 +248,8 @@ public class GestionCarreras extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButtonNuevaCarrera)
                     .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonAgregarCorredor))
+                    .addComponent(jToggleButtonAgregarCorredor)
+                    .addComponent(jComboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButtonBajaCarrera)
@@ -310,12 +334,23 @@ public class GestionCarreras extends javax.swing.JDialog {
     }//GEN-LAST:event_jToggleButtonModificarActionPerformed
 
     private void jToggleButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonFiltrarActionPerformed
-        if (jComboBoxFiltrar.getSelectedItem().equals("Nombre carrera")) {
-            RowFilter<CarrerasTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
-            sorter.setRowFilter(rf);
-        } else if (jComboBoxFiltrar.getSelectedItem().equals("Lugar")) {
-            RowFilter<CarrerasTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 2);
-            sorter.setRowFilter(rf1);
+        if (jComboBoxTablas.getSelectedItem().equals("Sin iniciar")) {
+            if (jComboBoxFiltrar.getSelectedItem().equals("Nombre carrera")) {
+                RowFilter<CarrerasTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
+                sorter.setRowFilter(rf);
+            } else if (jComboBoxFiltrar.getSelectedItem().equals("Lugar")) {
+                RowFilter<CarrerasTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 2);
+                sorter.setRowFilter(rf1);
+            }
+        }
+        if(jComboBoxTablas.getSelectedItem().equals("Finalizadas")){
+              if (jComboBoxFiltrar.getSelectedItem().equals("Nombre carrera")) {
+                RowFilter<CarrerasTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
+                sorter2.setRowFilter(rf);
+            } else if (jComboBoxFiltrar.getSelectedItem().equals("Lugar")) {
+                RowFilter<CarrerasTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 2);
+                sorter2.setRowFilter(rf1);
+            }
         }
         jTextFieldFiltrar.setText("");
     }//GEN-LAST:event_jToggleButtonFiltrarActionPerformed
@@ -326,7 +361,7 @@ public class GestionCarreras extends javax.swing.JDialog {
 
     private void jToggleButtonAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonAgregarCorredorActionPerformed
         try {
-            boolean foco=jTableCarreras.isFocusOwner();
+            boolean foco = jTableCarreras.isFocusOwner();
             System.out.println(foco);
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
@@ -376,14 +411,23 @@ public class GestionCarreras extends javax.swing.JDialog {
 
     private void jToggleButtonVerParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonVerParticipantesActionPerformed
         try {
-            int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
-            Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
-            ParticipantesCarrera participantesCarrera = new ParticipantesCarrera(paginaPrincipal, true, carrera, false);
-            participantesCarrera.setVisible(true);
+            if (jTableCarreras.getSelectedRowCount() > 0) {
+                int seleccion1 = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
+                Carrera carrera1 = LogicaCarreras.getListaCarreras().get(seleccion1);
+                ParticipantesCarrera participantesCarrera = new ParticipantesCarrera(paginaPrincipal, true, carrera1, false);
+                participantesCarrera.setVisible(true);
+            } else {
+                int seleccion2 = jTableFinalizadas.convertRowIndexToModel(jTableFinalizadas.getSelectedRow());
+                Carrera carrera2 = LogicaCarreras.getListaCarrerasFinalizadas().get(seleccion2);
+                ParticipantesCarrera participantesCarrera = new ParticipantesCarrera(paginaPrincipal, true, carrera2, false);
+                participantesCarrera.setVisible(true);
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableCarreras.clearSelection();
+        jTableFinalizadas.clearSelection();
     }//GEN-LAST:event_jToggleButtonVerParticipantesActionPerformed
 
     private void jToggleButtonIniciarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarCarreraActionPerformed
@@ -402,9 +446,34 @@ public class GestionCarreras extends javax.swing.JDialog {
         jTableCarreras.clearSelection();
     }//GEN-LAST:event_jToggleButtonIniciarCarreraActionPerformed
 
+    private void jTableCarrerasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableCarrerasFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableCarrerasFocusLost
+
+    private void jTableCarrerasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableCarrerasFocusGained
+        jTableFinalizadas.clearSelection();
+        jToggleButtonAgregarCorredor.setEnabled(true);
+        jToggleButtonAnularCorredores.setEnabled(true);
+        jToggleButtonBajaCarrera.setEnabled(true);
+        jToggleButtonIniciarCarrera.setEnabled(true);
+        jToggleButtonModificar.setEnabled(true);
+        jToggleButtonNuevaCarrera.setEnabled(true);
+    }//GEN-LAST:event_jTableCarrerasFocusGained
+
+    private void jTableFinalizadasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableFinalizadasFocusGained
+        jTableCarreras.clearSelection();
+        jToggleButtonAgregarCorredor.setEnabled(false);
+        jToggleButtonAnularCorredores.setEnabled(false);
+        jToggleButtonBajaCarrera.setEnabled(false);
+        jToggleButtonIniciarCarrera.setEnabled(false);
+        jToggleButtonModificar.setEnabled(false);
+        jToggleButtonNuevaCarrera.setEnabled(false);
+    }//GEN-LAST:event_jTableFinalizadasFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBoxFiltrar;
+    private javax.swing.JComboBox<String> jComboBoxTablas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

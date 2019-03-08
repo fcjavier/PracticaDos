@@ -17,13 +17,15 @@ import run.PaginaPrincipal;
  * @author USER
  */
 public class GestionCorredores extends javax.swing.JDialog {
- 
+
     LogicaFicherosCSV lf = new LogicaFicherosCSV();
     CorredoresTableModel ctm;
     TableRowSorter<CorredoresTableModel> sorter;
     PaginaPrincipal paginaPrincipal;
+
     /**
      * Creates new form GestionCorredores
+     *
      * @param parent
      * @param modal
      */
@@ -34,15 +36,16 @@ public class GestionCorredores extends javax.swing.JDialog {
         this.setTitle("GESTIÓN DE CORREDORES");
         CargarTableModelCorredores();
     }
+
     //Método que rellena el listado de corredores
-    public void CargarTableModelCorredores(){
+    public void CargarTableModelCorredores() {
         ctm = new CorredoresTableModel(LogicaCorredor.getListaCorredores());
         jTableCorredores.setModel(ctm);
         sorter = new TableRowSorter<>(ctm);
         jTableCorredores.setRowSorter(sorter);
-        List<SortKey>sortkeys = new ArrayList<SortKey>();
+        List<SortKey> sortkeys = new ArrayList<SortKey>();
         sortkeys.add(new SortKey(0, SortOrder.ASCENDING));
-        sorter.setSortKeys(sortkeys);       
+        sorter.setSortKeys(sortkeys);
     }
 
     /**
@@ -57,13 +60,13 @@ public class GestionCorredores extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCorredores = new javax.swing.JTable();
-        jToggleButtonNuevoCorredor = new javax.swing.JToggleButton();
-        jToggleButtonBaja = new javax.swing.JToggleButton();
-        jToggleButtonModificar = new javax.swing.JToggleButton();
         jComboBoxFiltrar = new javax.swing.JComboBox<>();
         jTextFieldFiltrar = new javax.swing.JTextField();
-        jToggleButtonFiltrar = new javax.swing.JToggleButton();
-        jToggleButtonCarrerasCorredor = new javax.swing.JToggleButton();
+        jButtonNuevoCorredor = new javax.swing.JButton();
+        jButtonBajaCorredor = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
+        jButtonVerCarrerasCorredor = new javax.swing.JButton();
+        jButtonFiltrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -80,41 +83,44 @@ public class GestionCorredores extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTableCorredores);
 
-        jToggleButtonNuevoCorredor.setText("NUEVO CORREDOR");
-        jToggleButtonNuevoCorredor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonNuevoCorredorActionPerformed(evt);
-            }
-        });
-
-        jToggleButtonBaja.setText("BAJA CORREDOR");
-        jToggleButtonBaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonBajaActionPerformed(evt);
-            }
-        });
-
-        jToggleButtonModificar.setText("MODIFICAR ");
-        jToggleButtonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonModificarActionPerformed(evt);
-            }
-        });
-
         jComboBoxFiltrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtrar por...", "Nombre", "DNI" }));
 
-        jToggleButtonFiltrar.setText("FILTRAR");
-        jToggleButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNuevoCorredor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonNuevoCorredor.setText("NUEVO CORREDOR");
+        jButtonNuevoCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonFiltrarActionPerformed(evt);
+                jButtonNuevoCorredorActionPerformed(evt);
             }
         });
 
-        jToggleButtonCarrerasCorredor.setText("VER  CARRERAS  CORREDOR");
-        jToggleButtonCarrerasCorredor.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBajaCorredor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonBajaCorredor.setText("BAJA CORREDOR");
+        jButtonBajaCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonCarrerasCorredorActionPerformed(evt);
+                jButtonBajaCorredorActionPerformed(evt);
+            }
+        });
+
+        jButtonModificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonModificar.setText("MODIFICAR");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
+
+        jButtonVerCarrerasCorredor.setText("VER CARRERAS CORREDOR");
+        jButtonVerCarrerasCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerCarrerasCorredorActionPerformed(evt);
+            }
+        });
+
+        jButtonFiltrar.setText("FILTRAR");
+        jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFiltrarActionPerformed(evt);
             }
         });
 
@@ -125,16 +131,16 @@ public class GestionCorredores extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jToggleButtonNuevoCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButtonCarrerasCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                    .addComponent(jButtonBajaCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonNuevoCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jButtonVerCarrerasCorredor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldFiltrar)
                     .addComponent(jComboBoxFiltrar, 0, 127, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButtonFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,19 +148,23 @@ public class GestionCorredores extends javax.swing.JDialog {
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButtonNuevoCorredor)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonCarrerasCorredor))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButtonBaja)
-                    .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButtonModificar)
-                    .addComponent(jToggleButtonFiltrar))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonNuevoCorredor)
+                        .addComponent(jButtonVerCarrerasCorredor)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonBajaCorredor)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonModificar)
+                    .addComponent(jButtonFiltrar))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,14 +187,14 @@ public class GestionCorredores extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonNuevoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonNuevoCorredorActionPerformed
+    private void jButtonNuevoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoCorredorActionPerformed
         DatosCorredor datosCorredor = new DatosCorredor(paginaPrincipal, true);
         datosCorredor.setVisible(true);
         ctm.fireTableDataChanged();
-    }//GEN-LAST:event_jToggleButtonNuevoCorredorActionPerformed
+    }//GEN-LAST:event_jButtonNuevoCorredorActionPerformed
 
-    private void jToggleButtonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonBajaActionPerformed
-             try {
+    private void jButtonBajaCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaCorredorActionPerformed
+        try {
             int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
             int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar al corredor?", "BORRADO", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.YES_OPTION) {
@@ -198,11 +208,11 @@ public class GestionCorredores extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
         }
-             jTableCorredores.clearSelection();
-    }//GEN-LAST:event_jToggleButtonBajaActionPerformed
+        jTableCorredores.clearSelection();
+    }//GEN-LAST:event_jButtonBajaCorredorActionPerformed
 
-    private void jToggleButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonModificarActionPerformed
-           try {
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        try {
             int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
             ModificarDatos modificarDatos = new ModificarDatos(paginaPrincipal,
                     true, LogicaCorredor.getListaCorredores().get(seleccion));
@@ -212,42 +222,42 @@ public class GestionCorredores extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
         }
-           jTableCorredores.clearSelection();
-    }//GEN-LAST:event_jToggleButtonModificarActionPerformed
+        jTableCorredores.clearSelection();
+    }//GEN-LAST:event_jButtonModificarActionPerformed
 
-    private void jToggleButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonFiltrarActionPerformed
-         if(jComboBoxFiltrar.getSelectedItem().equals("Nombre")){
-             RowFilter<CorredoresTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
-        sorter.setRowFilter(rf);
-         }else if(jComboBoxFiltrar.getSelectedItem().equals("DNI")){
-             RowFilter<CorredoresTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 1);
-        sorter.setRowFilter(rf1);
-         }
-         jTextFieldFiltrar.setText("");
-    }//GEN-LAST:event_jToggleButtonFiltrarActionPerformed
+    private void jButtonVerCarrerasCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerCarrerasCorredorActionPerformed
+        try {
+            int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
+            CarrerasDelCorredor carrerasDelCorredor = new CarrerasDelCorredor(paginaPrincipal, true,
+                    LogicaCorredor.getListaCorredores().get(seleccion));
+            carrerasDelCorredor.setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonVerCarrerasCorredorActionPerformed
 
-    private void jToggleButtonCarrerasCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonCarrerasCorredorActionPerformed
-         try{
-             int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
-             CarrerasDelCorredor carrerasDelCorredor = new CarrerasDelCorredor(paginaPrincipal, true,
-                     LogicaCorredor.getListaCorredores().get(seleccion));
-             carrerasDelCorredor.setVisible(true);
-         }catch(Exception ex){
-             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
-         }
-    }//GEN-LAST:event_jToggleButtonCarrerasCorredorActionPerformed
- 
+    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+        if (jComboBoxFiltrar.getSelectedItem().equals("Nombre")) {
+            RowFilter<CorredoresTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
+            sorter.setRowFilter(rf);
+        } else if (jComboBoxFiltrar.getSelectedItem().equals("DNI")) {
+            RowFilter<CorredoresTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 1);
+            sorter.setRowFilter(rf1);
+        }
+        jTextFieldFiltrar.setText("");
+    }//GEN-LAST:event_jButtonFiltrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBajaCorredor;
+    private javax.swing.JButton jButtonFiltrar;
+    private javax.swing.JButton jButtonModificar;
+    private javax.swing.JButton jButtonNuevoCorredor;
+    private javax.swing.JButton jButtonVerCarrerasCorredor;
     private javax.swing.JComboBox<String> jComboBoxFiltrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCorredores;
     private javax.swing.JTextField jTextFieldFiltrar;
-    private javax.swing.JToggleButton jToggleButtonBaja;
-    private javax.swing.JToggleButton jToggleButtonCarrerasCorredor;
-    private javax.swing.JToggleButton jToggleButtonFiltrar;
-    private javax.swing.JToggleButton jToggleButtonModificar;
-    private javax.swing.JToggleButton jToggleButtonNuevoCorredor;
     // End of variables declaration//GEN-END:variables
 }

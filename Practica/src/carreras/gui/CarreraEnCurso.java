@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package carreras.gui;
 
 import carreras.dto.Carrera;
@@ -64,11 +59,11 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCarreraIniciada = new javax.swing.JTable();
         cronometro = new jcronometro.Cronometro();
-        jToggleButtonIniciarCrono = new javax.swing.JToggleButton();
-        jToggleButtonDetenerCrono = new javax.swing.JToggleButton();
-        jToggleButtonReiniciarCrono = new javax.swing.JToggleButton();
         jLabelTiempoCorredor = new javax.swing.JLabel();
-        jToggleButtonFinalCarrera = new javax.swing.JToggleButton();
+        jButtonIniciar = new javax.swing.JButton();
+        jButtonDetener = new javax.swing.JButton();
+        jButtonReiniciar = new javax.swing.JButton();
+        jButtonFinal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -97,30 +92,6 @@ public class CarreraEnCurso extends javax.swing.JDialog {
             }
         });
 
-        jToggleButtonIniciarCrono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jToggleButtonIniciarCrono.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jToggleButtonIniciarCrono.text")); // NOI18N
-        jToggleButtonIniciarCrono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonIniciarCronoActionPerformed(evt);
-            }
-        });
-
-        jToggleButtonDetenerCrono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jToggleButtonDetenerCrono.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jToggleButtonDetenerCrono.text")); // NOI18N
-        jToggleButtonDetenerCrono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonDetenerCronoActionPerformed(evt);
-            }
-        });
-
-        jToggleButtonReiniciarCrono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jToggleButtonReiniciarCrono.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jToggleButtonReiniciarCrono.text")); // NOI18N
-        jToggleButtonReiniciarCrono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonReiniciarCronoActionPerformed(evt);
-            }
-        });
-
         jLabelTiempoCorredor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelTiempoCorredor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTiempoCorredor.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jLabelTiempoCorredor.text")); // NOI18N
@@ -128,10 +99,34 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         jLabelTiempoCorredor.setMinimumSize(new java.awt.Dimension(79, 27));
         jLabelTiempoCorredor.setOpaque(true);
 
-        jToggleButtonFinalCarrera.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jToggleButtonFinalCarrera.text")); // NOI18N
-        jToggleButtonFinalCarrera.addActionListener(new java.awt.event.ActionListener() {
+        jButtonIniciar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonIniciar.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jButtonIniciar.text")); // NOI18N
+        jButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonFinalCarreraActionPerformed(evt);
+                jButtonIniciarActionPerformed(evt);
+            }
+        });
+
+        jButtonDetener.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonDetener.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jButtonDetener.text")); // NOI18N
+        jButtonDetener.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetenerActionPerformed(evt);
+            }
+        });
+
+        jButtonReiniciar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonReiniciar.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jButtonReiniciar.text")); // NOI18N
+        jButtonReiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReiniciarActionPerformed(evt);
+            }
+        });
+
+        jButtonFinal.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jButtonFinal.text")); // NOI18N
+        jButtonFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFinalActionPerformed(evt);
             }
         });
 
@@ -146,33 +141,33 @@ public class CarreraEnCurso extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(timerData1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cronometro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonReiniciarCrono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonDetenerCrono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonIniciarCrono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelTiempoCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonFinalCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonDetener, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(timerData1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cronometro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonIniciar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonDetener)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButtonIniciarCrono)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButtonDetenerCrono)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButtonReiniciarCrono)
-                .addGap(18, 18, 18)
+                .addComponent(jButtonReiniciar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelTiempoCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButtonFinalCarrera)
-                .addGap(0, 95, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jButtonFinal)
+                .addGap(83, 83, 83))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,20 +190,6 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonIniciarCronoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarCronoActionPerformed
-        cronometro.setEstado(true);
-    }//GEN-LAST:event_jToggleButtonIniciarCronoActionPerformed
-
-    private void jToggleButtonDetenerCronoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonDetenerCronoActionPerformed
-        cronometro.setEstado(false);
-    }//GEN-LAST:event_jToggleButtonDetenerCronoActionPerformed
-
-    private void jToggleButtonReiniciarCronoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonReiniciarCronoActionPerformed
-        cronometro.setHor(0);
-        cronometro.setMin(0);
-        cronometro.setSeg(0);
-    }//GEN-LAST:event_jToggleButtonReiniciarCronoActionPerformed
-
     private void cronometroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cronometroMouseClicked
         try {
             String tiempo = cronometro.getText();
@@ -225,26 +206,40 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_cronometroMouseClicked
 
-    private void jToggleButtonFinalCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonFinalCarreraActionPerformed
-        carrera.setEstado(true);
+    private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
+        cronometro.setEstado(true);
+    }//GEN-LAST:event_jButtonIniciarActionPerformed
+
+    private void jButtonDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetenerActionPerformed
+        cronometro.setEstado(false);
+    }//GEN-LAST:event_jButtonDetenerActionPerformed
+
+    private void jButtonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReiniciarActionPerformed
+        cronometro.setHor(0);
+        cronometro.setMin(0);
+        cronometro.setSeg(0);
+    }//GEN-LAST:event_jButtonReiniciarActionPerformed
+
+    private void jButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalActionPerformed
+                 carrera.setEstado(true);
         LogicaCarreras.getListaCarrerasFinalizadas().add(carrera);
         boolean cambiar = LogicaCarreras.getListaCarreras().remove(carrera);
-        if(cambiar){
+        if (cambiar) {
             JOptionPane.showMessageDialog(this, "Carrera guardada como finalizada.", "", JOptionPane.PLAIN_MESSAGE);
         }
-    }//GEN-LAST:event_jToggleButtonFinalCarreraActionPerformed
+    }//GEN-LAST:event_jButtonFinalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private jcronometro.Cronometro cronometro;
+    private javax.swing.JButton jButtonDetener;
+    private javax.swing.JButton jButtonFinal;
+    private javax.swing.JButton jButtonIniciar;
+    private javax.swing.JButton jButtonReiniciar;
     private javax.swing.JLabel jLabelTiempoCorredor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCarreraIniciada;
-    private javax.swing.JToggleButton jToggleButtonDetenerCrono;
-    private javax.swing.JToggleButton jToggleButtonFinalCarrera;
-    private javax.swing.JToggleButton jToggleButtonIniciarCrono;
-    private javax.swing.JToggleButton jToggleButtonReiniciarCrono;
     private timersavedata.TimerData timerData1;
     // End of variables declaration//GEN-END:variables
 }

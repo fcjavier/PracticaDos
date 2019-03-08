@@ -7,16 +7,19 @@ package run;
 
 import carreras.gui.GestionCarreras;
 import carreras.logica.LogicaCarreras;
-import corredores.gui.GestionCorredores;
 import corredores.logica.LogicaCorredor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 import logicaParaFicheros.LogicaFicherosCSV;
 import logicaParaFicheros.LogicaFicherosObjetos;
-   
+
 /**
  *
  * @author USER
@@ -27,6 +30,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     LogicaFicherosCSV lf = new LogicaFicherosCSV();
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     LogicaCarreras logCarrera = new LogicaCarreras();
+
     /**
      * Creates new form PaginaPrincipal
      */
@@ -34,33 +38,39 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         initComponents();
         cargarFicheros();
         cerrar();
+        DefaultComboBoxModel dbm = new DefaultComboBoxModel();
+        for (LookAndFeelInfo lfi : UIManager.getInstalledLookAndFeels()) {
+            dbm.addElement(lfi.getName());
+        }
+        jComboBox1.setModel(dbm);
     }
-    public void cargarFicheros(){
+
+    public void cargarFicheros() {
         File fCorredores = new File("ficheros/corredores.dat");
         File fCarreras = new File("ficheros/carreras.dat");
         File fFinalizadas = new File("ficheros/finalizadas.dat");
         //lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("ficheros/corredor.csv"));
-       //logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("ficheros/carreras.csv"));
-       if(fCorredores.exists()){
-       lc.cargarListaCorredor(lfo.abrirFicheroLecturaCorredores("ficheros/corredores.dat"));
-       }
-       if(fCarreras.exists()){
-       logCarrera.cargarListaCarreras(lfo.abrirFicheroLecturaObjetos("ficheros/carreras.dat"));
-       }
-       if(fFinalizadas.exists()){
-       LogicaCarreras.cargarFinalizadas(lfo.abrirFicheroLecturaObjetos("ficheros/finalizadas.dat"));
-       }
+        //logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("ficheros/carreras.csv"));
+        if (fCorredores.exists()) {
+            lc.cargarListaCorredor(lfo.abrirFicheroLecturaCorredores("ficheros/corredores.dat"));
+        }
+        if (fCarreras.exists()) {
+            logCarrera.cargarListaCarreras(lfo.abrirFicheroLecturaObjetos("ficheros/carreras.dat"));
+        }
+        if (fFinalizadas.exists()) {
+            LogicaCarreras.cargarFinalizadas(lfo.abrirFicheroLecturaObjetos("ficheros/finalizadas.dat"));
+        }
     }
 
-    
-    public void guardarDatos(){
-        lf.abrirFicheroCSVEscrituraCorredor("ficheros/corredor.csv",LogicaCorredor.getListaCorredores());
+    public void guardarDatos() {
+        lf.abrirFicheroCSVEscrituraCorredor("ficheros/corredor.csv", LogicaCorredor.getListaCorredores());
         lf.abrirFicheroCSVEscrituraCarrera("ficheros/carreras.csv", LogicaCarreras.getListaCarreras());
         lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/carreras.dat", LogicaCarreras.getListaCarreras());
         lfo.abrirFicheroObjetosEscrituraCorredores("ficheros/corredores.dat", LogicaCorredor.getListaCorredores());
-        lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/finalizadas.dat",LogicaCarreras.getListaCarrerasFinalizadas());
+        lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/finalizadas.dat", LogicaCarreras.getListaCarrerasFinalizadas());
     }
-        public void cerrar() {
+
+    public void cerrar() {
         try {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
@@ -84,6 +94,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             System.exit(0);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,9 +106,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabelGestionCorredores = new javax.swing.JLabel();
-        jToggleButtonGestionCorredores = new javax.swing.JToggleButton();
         jLabel2GestionCarreras = new javax.swing.JLabel();
-        jToggleButtonGestionCarreras = new javax.swing.JToggleButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButtonGestionarCorredores = new javax.swing.JButton();
+        jButtonGestionarCarreras = new javax.swing.JButton();
+        timerData1 = new timersavedata.TimerData();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -107,24 +120,35 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabelGestionCorredores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelGestionCorredores.setText("Gestionar Corredores");
 
-        jToggleButtonGestionCorredores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jToggleButtonGestionCorredores.setText("SELECCIONAR");
-        jToggleButtonGestionCorredores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonGestionCorredoresActionPerformed(evt);
-            }
-        });
-
         jLabel2GestionCarreras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2GestionCarreras.setText("Gestionar Carreras");
 
-        jToggleButtonGestionCarreras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jToggleButtonGestionCarreras.setText("SELECCIONAR");
-        jToggleButtonGestionCarreras.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonGestionCarrerasActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
+
+        jButtonGestionarCorredores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonGestionarCorredores.setText("SELECCIONAR");
+        jButtonGestionarCorredores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestionarCorredoresActionPerformed(evt);
+            }
+        });
+
+        jButtonGestionarCarreras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonGestionarCarreras.setText("SELECCIONAR");
+        jButtonGestionarCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestionarCarrerasActionPerformed(evt);
+            }
+        });
+
+        timerData1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        timerData1.setFormato24h(true);
+        timerData1.setSalvar(new timersavedata.Save(10,true));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -137,23 +161,34 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabelGestionCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jToggleButtonGestionCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonGestionCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                    .addComponent(jButtonGestionarCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonGestionarCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timerData1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addComponent(timerData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelGestionCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonGestionCorredores))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonGestionarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2GestionCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonGestionCarreras))
-                .addContainerGap(159, Short.MAX_VALUE))
+                    .addComponent(jButtonGestionarCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
+
+        timerData1.getAccessibleContext().setAccessibleName("reloj");
 
         jMenu1.setText("File      ");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -176,23 +211,33 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonGestionCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonGestionCorredoresActionPerformed
-         GestionCorredores gestionCorredores = new GestionCorredores(this, true);
-         gestionCorredores.setVisible(true);
-    }//GEN-LAST:event_jToggleButtonGestionCorredoresActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        LookAndFeelInfo lookAndFeel = UIManager.getInstalledLookAndFeels()[jComboBox1.getSelectedIndex()];
+        try {
+            UIManager.setLookAndFeel(lookAndFeel.getClassName());
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (Throwable ex) {
 
-    private void jToggleButtonGestionCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonGestionCarrerasActionPerformed
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButtonGestionarCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarCorredoresActionPerformed
         GestionCarreras gestionCarreras = new GestionCarreras(this, true);
         gestionCarreras.setVisible(true);
-    }//GEN-LAST:event_jToggleButtonGestionCarrerasActionPerformed
+    }//GEN-LAST:event_jButtonGestionarCorredoresActionPerformed
+
+    private void jButtonGestionarCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarCarrerasActionPerformed
+        GestionCarreras gestionCarreras = new GestionCarreras(this, true);
+        gestionCarreras.setVisible(true);
+    }//GEN-LAST:event_jButtonGestionarCarrerasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,13 +275,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonGestionarCarreras;
+    private javax.swing.JButton jButtonGestionarCorredores;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2GestionCarreras;
     private javax.swing.JLabel jLabelGestionCorredores;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButtonGestionCarreras;
-    private javax.swing.JToggleButton jToggleButtonGestionCorredores;
+    private timersavedata.TimerData timerData1;
     // End of variables declaration//GEN-END:variables
 }

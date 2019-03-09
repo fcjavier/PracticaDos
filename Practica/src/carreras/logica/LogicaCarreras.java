@@ -13,7 +13,7 @@ public class LogicaCarreras {
 
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     private static List<Carrera> listaCarreras = new ArrayList<Carrera>();
-    private static List<Carrera> carrerasFinalizadas = new ArrayList<>();
+    private static List<Carrera> carrerasFinalizadas = new ArrayList<Carrera>();
 
     public boolean agregarCarrera(Carrera carrera) {
         return listaCarreras.add(carrera);

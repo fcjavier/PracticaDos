@@ -7,6 +7,7 @@ package run;
 
 import carreras.gui.GestionCarreras;
 import carreras.logica.LogicaCarreras;
+import corredores.gui.GestionCorredores;
 import corredores.logica.LogicaCorredor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -230,8 +231,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButtonGestionarCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarCorredoresActionPerformed
-        GestionCarreras gestionCarreras = new GestionCarreras(this, true);
-        gestionCarreras.setVisible(true);
+         GestionCorredores gestionCorredores = new GestionCorredores(this, true);
+         gestionCorredores.setVisible(true);
     }//GEN-LAST:event_jButtonGestionarCorredoresActionPerformed
 
     private void jButtonGestionarCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarCarrerasActionPerformed

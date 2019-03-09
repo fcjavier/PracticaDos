@@ -29,11 +29,13 @@ public class DatosCarrera extends javax.swing.JDialog {
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     CarrerasTableModel ctm = new CarrerasTableModel(LogicaCarreras.getListaCarreras());
     Carrera c;
-    List<String>dorsales=new ArrayList<String>();
-     
+    List<String> dorsales = new ArrayList<String>();
 
     /**
      * Creates new form DatosCarrera
+     *
+     * @param parent
+     * @param modal
      */
     public DatosCarrera(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -56,7 +58,7 @@ public class DatosCarrera extends javax.swing.JDialog {
             }
         });
     }
-    
+
     /**
      * Método que crea una carrera, a partir de los contenidos en las vistas del
      * panel.
@@ -83,11 +85,11 @@ public class DatosCarrera extends javax.swing.JDialog {
         if (respuesta == JOptionPane.YES_OPTION) {
             jTextFieldNombreCarrera.setText("");
             jTextFieldLugarCarrera.setText("");
+            jSpinnerMaxParticipantes.setValue(0);
         } else {
             dispose();
         }
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -231,21 +233,21 @@ public class DatosCarrera extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistrarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarCarreraActionPerformed
-          
-        c = crearCarrera();       
-        if (logicaCarrera.getListaCarreras().contains(c)) {
+
+        c = crearCarrera();
+        if (LogicaCarreras.getListaCarreras().contains(c)) {
             JOptionPane.showMessageDialog(this, "La carrera ya existe", "", JOptionPane.INFORMATION_MESSAGE);
         } else {
             if (logicaCarrera.agregarCarrera(c)) {
-                lf.abrirFicheroCSVEscrituraCarrera("ficheros/carreras.csv", logicaCarrera.getListaCarreras());
-               // lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/carreras.dat", LogicaCarreras.getListaCarreras());
+                lf.abrirFicheroCSVEscrituraCarrera("ficheros/carreras.csv", LogicaCarreras.getListaCarreras());
+                // lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/carreras.dat", LogicaCarreras.getListaCarreras());
                 JOptionPane.showMessageDialog(this, "Carrera registrada", "CONFIRMACIÓN", JOptionPane.INFORMATION_MESSAGE);
                 masRegistros();
             } else {
                 JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }             
-                }
-         
+            }
+        }
+
     }//GEN-LAST:event_jButtonRegistrarCarreraActionPerformed
 
 

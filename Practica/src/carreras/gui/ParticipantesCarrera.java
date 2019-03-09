@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package carreras.gui;
 
 import carreras.dto.Carrera;
 import carreras.tableModel.ParticipantesTableModel;
 import corredores.dto.Corredor;
 import corredores.dto.Participante;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -192,7 +188,7 @@ public class ParticipantesCarrera extends javax.swing.JDialog {
                 boolean s = carrera.getListaParticipantes().remove(participante);
                 if (s == true) {
                     JOptionPane.showMessageDialog(this, "Participante eliminado");
-                    String ruta = "ficheros/participantes/" + carrera.getNomCarrera() + ".csv";
+                    String ruta = "ficheros" + File.separator + "participantes" + File.separator + carrera.getNomCarrera() + ".csv";
                     lf.abrirFicheroCSVEscrituraParticipantes(ruta, carrera.getListaParticipantes());
                     ptm.fireTableDataChanged();
                 } else {

@@ -2,6 +2,7 @@ package corredores.gui;
 
 import corredores.logica.LogicaCorredor;
 import corredores.tableModel.CorredoresTableModel;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -199,7 +200,7 @@ public class GestionCorredores extends javax.swing.JDialog {
             int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar al corredor?", "BORRADO", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.YES_OPTION) {
                 LogicaCorredor.getListaCorredores().remove(seleccion);
-                lf.abrirFicheroCSVEscrituraCorredor("ficheros/corredor.csv", LogicaCorredor.getListaCorredores());
+                lf.abrirFicheroCSVEscrituraCorredor("ficheros" + File.separator + "corredor.csv", LogicaCorredor.getListaCorredores());
                 JOptionPane.showMessageDialog(this, "Corredor eliminado", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
                 ctm.fireTableDataChanged();
             } else {
@@ -217,7 +218,7 @@ public class GestionCorredores extends javax.swing.JDialog {
             ModificarDatos modificarDatos = new ModificarDatos(paginaPrincipal,
                     true, LogicaCorredor.getListaCorredores().get(seleccion));
             modificarDatos.setVisible(true);
-            lf.abrirFicheroCSVEscrituraCorredor("ficheros/corredor.csv", LogicaCorredor.getListaCorredores());
+            lf.abrirFicheroCSVEscrituraCorredor("ficheros" + File.separator + "corredor.csv", LogicaCorredor.getListaCorredores());
             ctm.fireTableDataChanged();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);

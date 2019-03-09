@@ -7,7 +7,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
- 
 
 /**
  *
@@ -16,7 +15,6 @@ import org.netbeans.validation.api.ui.ValidationGroup;
 public class ModificarDatos extends javax.swing.JDialog {
 
     Corredor c = new Corredor();
-    
 
     /**
      * Creates new form MostrarCorredor
@@ -26,12 +24,12 @@ public class ModificarDatos extends javax.swing.JDialog {
         initComponents();
         this.c = corredor;
         cargarDatosCorredor(c);
-        
-                ValidationGroup group = validationPanelCorredor.getValidationGroup();
+
+        ValidationGroup group = validationPanelCorredor.getValidationGroup();
         group.add(jTextFieldTelefono, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_NUMBER,
                 StringValidators.maxLength(9), StringValidators.minLength(9));
         group.add(jTextFieldDireccion, StringValidators.REQUIRE_NON_EMPTY_STRING);
-        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.maxLength(9),
+        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.maxLength(9),
                 StringValidators.minLength(9));
         group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
         validationPanelCorredor.addChangeListener(new ChangeListener() {
@@ -45,7 +43,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                 }
             }
         });
-        
+
     }
 
     /**

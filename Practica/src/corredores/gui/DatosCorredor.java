@@ -1,19 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package corredores.gui;
 
 import corredores.dto.Corredor;
 import corredores.logica.LogicaCorredor;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import logicaParaFicheros.LogicaFicherosCSV;
-import logicaParaFicheros.LogicaFicherosObjetos;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import run.PaginaPrincipal;
@@ -259,7 +254,7 @@ public class DatosCorredor extends javax.swing.JDialog {
         }
         if (registrar) {
             crearCorredor();
-            lf.abrirFicheroCSVEscrituraCorredor("ficheros/corredor.csv", LogicaCorredor.getListaCorredores());
+            lf.abrirFicheroCSVEscrituraCorredor("ficheros"+File.separator+"corredor.csv", LogicaCorredor.getListaCorredores());
             //lfo.abrirFicheroObjetosEscrituraCorredores("ficheros/corredores.dat", LogicaCorredor.getListaCorredores());
             int opcion = JOptionPane.showConfirmDialog(this, "NUEVO CORREDOR", "REGISTRO REALIZADO", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.NO_OPTION) {

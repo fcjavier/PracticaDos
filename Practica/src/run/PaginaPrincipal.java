@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package run;
 
 import carreras.gui.GestionCarreras;
@@ -31,7 +26,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     LogicaFicherosCSV lf = new LogicaFicherosCSV();
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     LogicaCarreras logCarrera = new LogicaCarreras();
-
+    final String CORREDORES= "ficheros"+File.separator+"corredores.dat";
+    final String CARRERAS = "ficheros"+File.separator+"carreras.dat";
+    final String FINALIZADAS =  "ficheros"+File.separator+"finalizadas.dat";
     /**
      * Creates new form PaginaPrincipal
      */
@@ -47,28 +44,28 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     public void cargarFicheros() {
-        File fCorredores = new File("ficheros/corredores.dat");
-        File fCarreras = new File("ficheros/carreras.dat");
-        File fFinalizadas = new File("ficheros/finalizadas.dat");
+        File fCorredores = new File(CORREDORES);
+        File fCarreras = new File(CARRERAS);
+        File fFinalizadas = new File(FINALIZADAS);
         //lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("ficheros/corredor.csv"));
         //logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("ficheros/carreras.csv"));
         if (fCorredores.exists()) {
-            lc.cargarListaCorredor(lfo.abrirFicheroLecturaCorredores("ficheros/corredores.dat"));
+            lc.cargarListaCorredor(lfo.abrirFicheroLecturaCorredores(CORREDORES));
         }
         if (fCarreras.exists()) {
-            logCarrera.cargarListaCarreras(lfo.abrirFicheroLecturaObjetos("ficheros/carreras.dat"));
+            logCarrera.cargarListaCarreras(lfo.abrirFicheroLecturaObjetos(CARRERAS));
         }
         if (fFinalizadas.exists()) {
-            LogicaCarreras.cargarFinalizadas(lfo.abrirFicheroLecturaObjetos("ficheros/finalizadas.dat"));
+            LogicaCarreras.cargarFinalizadas(lfo.abrirFicheroLecturaObjetos(FINALIZADAS));
         }
     }
 
     public void guardarDatos() {
-        lf.abrirFicheroCSVEscrituraCorredor("ficheros/corredor.csv", LogicaCorredor.getListaCorredores());
-        lf.abrirFicheroCSVEscrituraCarrera("ficheros/carreras.csv", LogicaCarreras.getListaCarreras());
-        lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/carreras.dat", LogicaCarreras.getListaCarreras());
-        lfo.abrirFicheroObjetosEscrituraCorredores("ficheros/corredores.dat", LogicaCorredor.getListaCorredores());
-        lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/finalizadas.dat", LogicaCarreras.getListaCarrerasFinalizadas());
+        lf.abrirFicheroCSVEscrituraCorredor("ficheros"+File.separator+"corredor.csv", LogicaCorredor.getListaCorredores());
+        lf.abrirFicheroCSVEscrituraCarrera("ficheros"+File.separator+"carreras.csv", LogicaCarreras.getListaCarreras());
+        lfo.abrirFicheroObjetosEscrituraCarreras(CARRERAS, LogicaCarreras.getListaCarreras());
+        lfo.abrirFicheroObjetosEscrituraCorredores(CORREDORES, LogicaCorredor.getListaCorredores());
+        lfo.abrirFicheroObjetosEscrituraCarreras(FINALIZADAS, LogicaCarreras.getListaCarrerasFinalizadas());
     }
 
     public void cerrar() {
@@ -231,8 +228,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButtonGestionarCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarCorredoresActionPerformed
-         GestionCorredores gestionCorredores = new GestionCorredores(this, true);
-         gestionCorredores.setVisible(true);
+        GestionCorredores gestionCorredores = new GestionCorredores(this, true);
+        gestionCorredores.setVisible(true);
     }//GEN-LAST:event_jButtonGestionarCorredoresActionPerformed
 
     private void jButtonGestionarCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarCarrerasActionPerformed

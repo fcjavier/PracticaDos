@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package carreras.gui;
 
 import carreras.dto.Carrera;
 import carreras.logica.LogicaCarreras;
 import carreras.tableModel.CarrerasTableModel;
 import corredores.gui.DatosCorredor;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -345,7 +341,7 @@ public class GestionCarreras extends javax.swing.JDialog {
                 int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar la carrera?", "BORRADO", JOptionPane.YES_NO_OPTION);
                 if (opcion == JOptionPane.YES_OPTION) {
                     LogicaCarreras.getListaCarreras().remove(seleccion);
-                    lf.abrirFicheroCSVEscrituraCarrera("ficheros/carreras.csv", LogicaCarreras.getListaCarreras());
+                    lf.abrirFicheroCSVEscrituraCarrera("ficheros" + File.separator + "carreras.csv", LogicaCarreras.getListaCarreras());
                     //lfo.abrirFicheroObjetosEscrituraCarreras("ficheros/carreras.dat", LogicaCarreras.getListaCarreras());
                     JOptionPane.showMessageDialog(this, "Carrera eliminada", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
                     ctm.fireTableDataChanged();

@@ -5,6 +5,7 @@ import corredores.dto.Corredor;
 import corredores.dto.Participante;
 import corredores.logica.LogicaCorredor;
 import corredores.tableModel.CorredoresTableModel;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -204,7 +205,7 @@ public class CorredoresParaCarrera extends javax.swing.JDialog {
                     participante.setDorsal(String.valueOf(dor));
                     carrera.getListaParticipantes().add(participante);
                     JOptionPane.showMessageDialog(this, "Asignado dorsal: " + dor);
-                    String ruta = "ficheros/participantes/" + carrera.getNomCarrera() + ".csv";
+                    String ruta = "ficheros" + File.separator + "participantes" + File.separator + carrera.getNomCarrera() + ".csv";
                     lf.abrirFicheroCSVEscrituraParticipantes(ruta, carrera.getListaParticipantes());
                     corredor.getInscripciones().add(carrera);
                 } else {

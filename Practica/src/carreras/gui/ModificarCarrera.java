@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package carreras.gui;
 
 import carreras.dto.Carrera;
 import carreras.logica.LogicaCarreras;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -17,10 +11,10 @@ import javax.swing.JOptionPane;
 public class ModificarCarrera extends javax.swing.JDialog {
 
     Carrera c;
-     
 
     /**
      * Creates new form ModificarCarrera
+     *
      * @param parent
      * @param modal
      * @param carrera

@@ -26,6 +26,7 @@ import run.PaginaPrincipal;
 public class GestionCarreras extends javax.swing.JDialog {
 
     CarrerasTableModel ctm;
+    CarrerasTableModel ctm1;
     TableRowSorter<CarrerasTableModel> sorter;
     TableRowSorter<CarrerasTableModel> sorter2;
     PaginaPrincipal paginaPrincipal;
@@ -59,9 +60,9 @@ public class GestionCarreras extends javax.swing.JDialog {
     }
 
     public void cargarTableFinalizadas() {
-        ctm = new CarrerasTableModel(LogicaCarreras.getListaCarrerasFinalizadas());
-        jTableFinalizadas.setModel(ctm);
-        sorter2 = new TableRowSorter<>(ctm);
+        ctm1 = new CarrerasTableModel(LogicaCarreras.getListaCarrerasFinalizadas());
+        jTableFinalizadas.setModel(ctm1);
+        sorter2 = new TableRowSorter<>(ctm1);
         jTableFinalizadas.setRowSorter(sorter2);
         List<SortKey> sortKeys = new ArrayList<SortKey>();
         sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
@@ -358,6 +359,7 @@ public class GestionCarreras extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "No ha seleccionado carrera", "", JOptionPane.INFORMATION_MESSAGE);
         }
         ctm.fireTableDataChanged();
+        ctm1.fireTableDataChanged();
         jTableCarreras.clearSelection();
     }//GEN-LAST:event_jButtonBajaCarreraActionPerformed
 
@@ -382,8 +384,6 @@ public class GestionCarreras extends javax.swing.JDialog {
 
     private void jButtonAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarCorredorActionPerformed
         try {
-            boolean foco = jTableCarreras.isFocusOwner();
-            System.out.println(foco);
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
             if (carrera.getListaParticipantes().size() < carrera.getMaxParticipantes()) {
@@ -464,6 +464,8 @@ public class GestionCarreras extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
+        ctm.fireTableDataChanged();
+        ctm1.fireTableDataChanged();
         jTableCarreras.clearSelection();
     }//GEN-LAST:event_jButtonIniciarCarreraActionPerformed
 

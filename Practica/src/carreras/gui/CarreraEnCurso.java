@@ -18,6 +18,7 @@ import javax.swing.table.TableRowSorter;
 public class CarreraEnCurso extends javax.swing.JDialog {
 
     Carrera carrera;
+    Carrera carreraAux;
     ParticipantesTableModel ptm;
     TableRowSorter<ParticipantesTableModel> sorter;
 
@@ -207,7 +208,11 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     }//GEN-LAST:event_cronometroMouseClicked
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
+        carreraAux=carrera;
         cronometro.setEstado(true);
+        carrera.setEstado(true);
+        LogicaCarreras.getListaCarrerasFinalizadas().add(carrera);
+        
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
     private void jButtonDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetenerActionPerformed
@@ -221,9 +226,8 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonReiniciarActionPerformed
 
     private void jButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalActionPerformed
-                 carrera.setEstado(true);
-        LogicaCarreras.getListaCarrerasFinalizadas().add(carrera);
-        boolean cambiar = LogicaCarreras.getListaCarreras().remove(carrera);
+                         
+        boolean cambiar = LogicaCarreras.getListaCarreras().remove(carreraAux);
         if (cambiar) {
             JOptionPane.showMessageDialog(this, "Carrera guardada como finalizada.", "", JOptionPane.PLAIN_MESSAGE);
         }

@@ -4,7 +4,6 @@ import carreras.dto.Carrera;
 import carreras.logica.LogicaCarreras;
 import carreras.tableModel.ParticipantesTableModel;
 import corredores.dto.Participante;
-import java.awt.Component;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,11 +54,12 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         jButtonDetener.setEnabled(false);
         jButtonReiniciar.setEnabled(false);
         jButtonFinal.setEnabled(false);
-        
+
     }
-    private boolean finDeCarrera(int n){
+
+    private boolean finDeCarrera(int n) {
         boolean fin = false;
-        if(n==carrera.getMaxParticipantes()){
+        if (n == carrera.getMaxParticipantes()) {
             fin = true;
             jButtonDetener.setEnabled(true);
             jButtonReiniciar.setEnabled(true);
@@ -227,41 +227,41 @@ public class CarreraEnCurso extends javax.swing.JDialog {
 
     private void cronometroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cronometroMouseClicked
         try {
-            if(!finDeCarrera(cont)){
-            boolean correcto = false;
-            String tiempo = cronometro.getText();
-            jLabelTiempoCorredor.setText(tiempo);
-            while (!correcto) {
-                String llegada = JOptionPane.showInputDialog(this, "DORSAL PARTICIPANTE", "ASIGNAR DORSAL", JOptionPane.QUESTION_MESSAGE);
-                int n = Integer.valueOf(llegada);
-                if ((n > 99) && (n < (carrera.getMaxParticipantes() + 100))) {
-                    for (Participante p : carrera.getListaParticipantes()) {
-                        if (llegada.equalsIgnoreCase(p.getDorsal()) && p.getTiempo().equals("")) {
-                            p.setTiempo(tiempo);
-                            ptm.fireTableDataChanged();
-                            correcto = true;
-                            cont++;
-                        } else {
-                            if (llegada.equals(p.getDorsal()) && !p.getTiempo().equals("")) {
-                                JOptionPane.showMessageDialog(this, "El corredor con ese dorsal\nya tiene tiempo.");
-                                correcto = false;
+            if (!finDeCarrera(cont)) {
+                boolean correcto = false;
+                String tiempo = cronometro.getText();
+                jLabelTiempoCorredor.setText(tiempo);
+                while (!correcto) {
+                    String llegada = JOptionPane.showInputDialog(this, "DORSAL PARTICIPANTE", "ASIGNAR DORSAL", JOptionPane.QUESTION_MESSAGE);
+                    int n = Integer.valueOf(llegada);
+                    if ((n > 99) && (n < (carrera.getMaxParticipantes() + 100))) {
+                        for (Participante p : carrera.getListaParticipantes()) {
+                            if (llegada.equalsIgnoreCase(p.getDorsal()) && p.getTiempo().equals("")) {
+                                p.setTiempo(tiempo);
+                                ptm.fireTableDataChanged();
+                                correcto = true;
+                                cont++;
+                            } else {
+                                if (llegada.equals(p.getDorsal()) && !p.getTiempo().equals("")) {
+                                    JOptionPane.showMessageDialog(this, "El corredor con ese dorsal\nya tiene tiempo.");
+                                    correcto = false;
+                                }
                             }
                         }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "DORSAL INCORRECTO");
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "DORSAL INCORRECTO");
                 }
-            }
-            finDeCarrera(cont);
-            }else{
+                finDeCarrera(cont);
+            } else {
                 JOptionPane.showMessageDialog(this, "TODOS LOS CORREDORES\nHAN LLEGADO A META");
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "El dorsal no existe");
         }
-        
-        
+
+
     }//GEN-LAST:event_cronometroMouseClicked
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
@@ -290,28 +290,28 @@ public class CarreraEnCurso extends javax.swing.JDialog {
             if (cambiar) {
                 JOptionPane.showMessageDialog(this, "Carrera guardada como finalizada.", "", JOptionPane.PLAIN_MESSAGE);
             }
-        }       
+        }
         jButtonFinal.setEnabled(false);
         int tablaRow = jTableCarreraIniciada.getRowCount();
-        String ruta = "ficheros"+File.separator+"informeFinalizadas"+File.separator
-                +carrera.getNomCarrera().concat(carrera.getLugar())+".csv";
-        LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, carrera.getNomCarrera()+"\r\n");
-        LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, carrera.getFechaCarrera()+"\r\n");
-        for(int i=0;i<tablaRow;i++){
-            if(i<9){
-            String mensaje= "  "+(i+1)+".  "+jTableCarreraIniciada.getValueAt(i, 0)+" | "
-                    +jTableCarreraIniciada.getValueAt(i, 1)+" | "+jTableCarreraIniciada.getValueAt(i, 2)+"\r\n";
-            LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, mensaje);
-            }else{
-                String mensaje= "  "+(i+1)+". "+jTableCarreraIniciada.getValueAt(i, 0)+" | "
-                    +jTableCarreraIniciada.getValueAt(i, 1)+" | "+jTableCarreraIniciada.getValueAt(i, 2)+"\r\n";
-            LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, mensaje);
+        String ruta = "ficheros" + File.separator + "informeFinalizadas" + File.separator
+                + carrera.getNomCarrera().trim().concat(carrera.getLugar().trim()) + ".csv";
+        LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, carrera.getNomCarrera() + "\r\n");
+        LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, carrera.getFechaCarrera() + "\r\n");
+        for (int i = 0; i < tablaRow; i++) {
+            if (i < 9) {
+                String mensaje = "  " + (i + 1) + ".  " + jTableCarreraIniciada.getValueAt(i, 0) + " | "
+                        + jTableCarreraIniciada.getValueAt(i, 1) + " | " + jTableCarreraIniciada.getValueAt(i, 2) + "\r\n";
+                LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, mensaje);
+            } else {
+                String mensaje = "  " + (i + 1) + ". " + jTableCarreraIniciada.getValueAt(i, 0) + " | "
+                        + jTableCarreraIniciada.getValueAt(i, 1) + " | " + jTableCarreraIniciada.getValueAt(i, 2) + "\r\n";
+                LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, mensaje);
             }
         }
     }//GEN-LAST:event_jButtonFinalActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
-         dispose();
+        dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
 

@@ -5,6 +5,7 @@ import corredores.dto.Corredor;
 import corredores.dto.Participante;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import javax.swing.text.FieldView;
 import org.openide.util.Exceptions;
 
 /**
@@ -175,6 +177,16 @@ public class LogicaFicherosCSV {
         }
         return participantes;
     }
+         public static void grabarCSVCarreraFilalizada(String fichero,String linea){
+        try {
+            File f = new File(fichero);
+            BufferedWriter escribe = new BufferedWriter(new FileWriter(f, true));
+            escribe.write(linea);
+            escribe.close();
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+         }
     /**
      * Método que extrae los tokens existentes, en una cadena de caracteres.
      * Recibe un String con la cadena a tokenizar.

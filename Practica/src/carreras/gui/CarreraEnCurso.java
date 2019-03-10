@@ -4,12 +4,15 @@ import carreras.dto.Carrera;
 import carreras.logica.LogicaCarreras;
 import carreras.tableModel.ParticipantesTableModel;
 import corredores.dto.Participante;
+import java.awt.Component;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
+import logicaParaFicheros.LogicaFicherosCSV;
 
 /**
  *
@@ -287,8 +290,24 @@ public class CarreraEnCurso extends javax.swing.JDialog {
             if (cambiar) {
                 JOptionPane.showMessageDialog(this, "Carrera guardada como finalizada.", "", JOptionPane.PLAIN_MESSAGE);
             }
-        }
+        }       
         jButtonFinal.setEnabled(false);
+        int tablaRow = jTableCarreraIniciada.getRowCount();
+        String ruta = "ficheros"+File.separator+"informeFinalizadas"+File.separator
+                +carrera.getNomCarrera().concat(carrera.getLugar())+".csv";
+        LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, carrera.getNomCarrera()+"\r\n");
+        LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, carrera.getFechaCarrera()+"\r\n");
+        for(int i=0;i<tablaRow;i++){
+            if(i<9){
+            String mensaje= "  "+(i+1)+".  "+jTableCarreraIniciada.getValueAt(i, 0)+" | "
+                    +jTableCarreraIniciada.getValueAt(i, 1)+" | "+jTableCarreraIniciada.getValueAt(i, 2)+"\r\n";
+            LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, mensaje);
+            }else{
+                String mensaje= "  "+(i+1)+". "+jTableCarreraIniciada.getValueAt(i, 0)+" | "
+                    +jTableCarreraIniciada.getValueAt(i, 1)+" | "+jTableCarreraIniciada.getValueAt(i, 2)+"\r\n";
+            LogicaFicherosCSV.grabarCSVCarreraFilalizada(ruta, mensaje);
+            }
+        }
     }//GEN-LAST:event_jButtonFinalActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed

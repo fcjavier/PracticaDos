@@ -21,6 +21,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     Carrera carreraAux;
     ParticipantesTableModel ptm;
     TableRowSorter<ParticipantesTableModel> sorter;
+    int cont;
 
     /**
      * Creates new form CarreraEnCurso
@@ -34,6 +35,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         initComponents();
         this.carrera = carrera;
         cargarTable();
+        anularOpciones();
     }
 
     public void cargarTable() {
@@ -42,8 +44,25 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         sorter = new TableRowSorter<>(ptm);
         jTableCarreraIniciada.setRowSorter(sorter);
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+        sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
+    }
+
+    public void anularOpciones() {
+        jButtonDetener.setEnabled(false);
+        jButtonReiniciar.setEnabled(false);
+        jButtonFinal.setEnabled(false);
+        
+    }
+    private boolean finDeCarrera(int n){
+        boolean fin = false;
+        if(n==carrera.getMaxParticipantes()){
+            fin = true;
+            jButtonDetener.setEnabled(true);
+            jButtonReiniciar.setEnabled(true);
+            jButtonFinal.setEnabled(true);
+        }
+        return fin;
     }
 
     /**
@@ -65,6 +84,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         jButtonDetener = new javax.swing.JButton();
         jButtonReiniciar = new javax.swing.JButton();
         jButtonFinal = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -131,6 +151,14 @@ public class CarreraEnCurso extends javax.swing.JDialog {
             }
         });
 
+        jButtonSalir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonSalir.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jButtonSalir.text")); // NOI18N
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,7 +174,8 @@ public class CarreraEnCurso extends javax.swing.JDialog {
                     .addComponent(jButtonIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonDetener, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,7 +197,9 @@ public class CarreraEnCurso extends javax.swing.JDialog {
                 .addComponent(jLabelTiempoCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jButtonFinal)
-                .addGap(83, 83, 83))
+                .addGap(30, 30, 30)
+                .addComponent(jButtonSalir)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,26 +224,49 @@ public class CarreraEnCurso extends javax.swing.JDialog {
 
     private void cronometroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cronometroMouseClicked
         try {
+            if(!finDeCarrera(cont)){
+            boolean correcto = false;
             String tiempo = cronometro.getText();
             jLabelTiempoCorredor.setText(tiempo);
-            String llegada = JOptionPane.showInputDialog(this, "DORSAL PARTICIPANTE", "ASIGNAR DORSAL", JOptionPane.QUESTION_MESSAGE);
-            for (Participante p : carrera.getListaParticipantes()) {
-                if (llegada.equalsIgnoreCase(p.getDorsal())) {
-                    p.setTiempo(tiempo);
-                    ptm.fireTableDataChanged();
+            while (!correcto) {
+                String llegada = JOptionPane.showInputDialog(this, "DORSAL PARTICIPANTE", "ASIGNAR DORSAL", JOptionPane.QUESTION_MESSAGE);
+                int n = Integer.valueOf(llegada);
+                if ((n > 99) && (n < (carrera.getMaxParticipantes() + 100))) {
+                    for (Participante p : carrera.getListaParticipantes()) {
+                        if (llegada.equalsIgnoreCase(p.getDorsal()) && p.getTiempo().equals("")) {
+                            p.setTiempo(tiempo);
+                            ptm.fireTableDataChanged();
+                            correcto = true;
+                            cont++;
+                        } else {
+                            if (llegada.equals(p.getDorsal()) && !p.getTiempo().equals("")) {
+                                JOptionPane.showMessageDialog(this, "El corredor con ese dorsal\nya tiene tiempo.");
+                                correcto = false;
+                            }
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "DORSAL INCORRECTO");
                 }
             }
+            finDeCarrera(cont);
+            }else{
+                JOptionPane.showMessageDialog(this, "TODOS LOS CORREDORES\nHAN LLEGADO A META");
+            }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "El dorsal no existe");
         }
+        
+        
     }//GEN-LAST:event_cronometroMouseClicked
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
-        carreraAux=carrera;
+        carreraAux = carrera;
         cronometro.setEstado(true);
         carrera.setEstado(true);
-        LogicaCarreras.getListaCarrerasFinalizadas().add(carrera);
-        
+        //LogicaCarreras.getListaCarrerasFinalizadas().add(carrera);
+
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
     private void jButtonDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetenerActionPerformed
@@ -226,12 +280,20 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonReiniciarActionPerformed
 
     private void jButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalActionPerformed
-                         
-        boolean cambiar = LogicaCarreras.getListaCarreras().remove(carreraAux);
-        if (cambiar) {
-            JOptionPane.showMessageDialog(this, "Carrera guardada como finalizada.", "", JOptionPane.PLAIN_MESSAGE);
+
+        boolean agregada = LogicaCarreras.getListaCarrerasFinalizadas().add(carrera);
+        if (agregada) {
+            boolean cambiar = LogicaCarreras.getListaCarreras().remove(carreraAux);
+            if (cambiar) {
+                JOptionPane.showMessageDialog(this, "Carrera guardada como finalizada.", "", JOptionPane.PLAIN_MESSAGE);
+            }
         }
+        jButtonFinal.setEnabled(false);
     }//GEN-LAST:event_jButtonFinalActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+         dispose();
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -240,6 +302,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     private javax.swing.JButton jButtonFinal;
     private javax.swing.JButton jButtonIniciar;
     private javax.swing.JButton jButtonReiniciar;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabelTiempoCorredor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

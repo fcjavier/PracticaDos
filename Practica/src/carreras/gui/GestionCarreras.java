@@ -82,14 +82,18 @@ public class GestionCarreras extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableFinalizadas = new javax.swing.JTable();
         jComboBoxTablas = new javax.swing.JComboBox<>();
-        jButtonNuevaCarrera = new javax.swing.JButton();
-        jButtonBajaCarrera = new javax.swing.JButton();
-        jButtonModificar = new javax.swing.JButton();
-        jButtonAgregarCorredor = new javax.swing.JButton();
-        jButtonAnularCorredor = new javax.swing.JButton();
-        jButtonVerParticipantes = new javax.swing.JButton();
-        jButtonIniciarCarrera = new javax.swing.JButton();
         jButtonFiltrar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemNuevaCarrera = new javax.swing.JMenuItem();
+        jMenuItemAnularCarrera = new javax.swing.JMenuItem();
+        jMenuItemModificar = new javax.swing.JMenuItem();
+        jMenuItemIniciarCarrera = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemAgregarCorredor = new javax.swing.JMenuItem();
+        jMenuParticipantesCarrera = new javax.swing.JMenu();
+        jMenuItemVerParticipantes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -129,6 +133,7 @@ public class GestionCarreras extends javax.swing.JDialog {
             }
         });
 
+        jTextFieldFiltrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldFiltrar.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jTextFieldFiltrar.text")); // NOI18N
 
         jTableFinalizadas.setModel(new javax.swing.table.DefaultTableModel(
@@ -152,62 +157,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         jComboBoxTablas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBoxTablas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtrar Tabla...", "Sin iniciar", "Finalizadas" }));
 
-        jButtonNuevaCarrera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonNuevaCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jButtonNuevaCarrera.text")); // NOI18N
-        jButtonNuevaCarrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNuevaCarreraActionPerformed(evt);
-            }
-        });
-
-        jButtonBajaCarrera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonBajaCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jButtonBajaCarrera.text")); // NOI18N
-        jButtonBajaCarrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBajaCarreraActionPerformed(evt);
-            }
-        });
-
-        jButtonModificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonModificar.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jButtonModificar.text")); // NOI18N
-        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarActionPerformed(evt);
-            }
-        });
-
-        jButtonAgregarCorredor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonAgregarCorredor.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jButtonAgregarCorredor.text")); // NOI18N
-        jButtonAgregarCorredor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAgregarCorredorActionPerformed(evt);
-            }
-        });
-
-        jButtonAnularCorredor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonAnularCorredor.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jButtonAnularCorredor.text")); // NOI18N
-        jButtonAnularCorredor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnularCorredorActionPerformed(evt);
-            }
-        });
-
-        jButtonVerParticipantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonVerParticipantes.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jButtonVerParticipantes.text")); // NOI18N
-        jButtonVerParticipantes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVerParticipantesActionPerformed(evt);
-            }
-        });
-
-        jButtonIniciarCarrera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonIniciarCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jButtonIniciarCarrera.text")); // NOI18N
-        jButtonIniciarCarrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonIniciarCarreraActionPerformed(evt);
-            }
-        });
-
+        jButtonFiltrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonFiltrar.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jButtonFiltrar.text")); // NOI18N
         jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,77 +171,137 @@ public class GestionCarreras extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonIniciarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButtonNuevaCarrera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(jButtonBajaCarrera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonAnularCorredor, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonAgregarCorredor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonVerParticipantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxFiltrar, 0, 129, Short.MAX_VALUE)
-                            .addComponent(jTextFieldFiltrar)
-                            .addComponent(jButtonFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jComboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jButtonFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonNuevaCarrera)
-                    .addComponent(jButtonAgregarCorredor))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonBajaCarrera)
-                            .addComponent(jButtonAnularCorredor))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonFiltrar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonModificar)
-                            .addComponent(jButtonVerParticipantes))))
                 .addGap(18, 18, 18)
-                .addComponent(jButtonIniciarCarrera)
-                .addGap(16, 16, 16))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonFiltrar))
+                .addGap(24, 24, 24))
         );
+
+        jMenu1.setBackground(new java.awt.Color(204, 204, 255));
+        jMenu1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenu1.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenu1.text")); // NOI18N
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu1.setOpaque(true);
+
+        jMenuItemNuevaCarrera.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItemNuevaCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItemNuevaCarrera.text")); // NOI18N
+        jMenuItemNuevaCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemNuevaCarreraActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemNuevaCarrera);
+
+        jMenuItemAnularCarrera.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItemAnularCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItemAnularCarrera.text")); // NOI18N
+        jMenuItemAnularCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAnularCarreraActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemAnularCarrera);
+
+        jMenuItemModificar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItemModificar.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItemModificar.text")); // NOI18N
+        jMenuItemModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModificarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemModificar);
+
+        jMenuItemIniciarCarrera.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItemIniciarCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItemIniciarCarrera.text")); // NOI18N
+        jMenuItemIniciarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemIniciarCarreraActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemIniciarCarrera);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setBackground(new java.awt.Color(204, 204, 255));
+        jMenu2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenu2.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenu2.text")); // NOI18N
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jMenu2.setOpaque(true);
+
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItem1.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItem1.text")); // NOI18N
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuItemAgregarCorredor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItemAgregarCorredor.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItemAgregarCorredor.text")); // NOI18N
+        jMenuItemAgregarCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgregarCorredorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemAgregarCorredor);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenuParticipantesCarrera.setBackground(new java.awt.Color(204, 204, 255));
+        jMenuParticipantesCarrera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuParticipantesCarrera.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuParticipantesCarrera.text")); // NOI18N
+        jMenuParticipantesCarrera.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jMenuParticipantesCarrera.setOpaque(true);
+
+        jMenuItemVerParticipantes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItemVerParticipantes.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItemVerParticipantes.text")); // NOI18N
+        jMenuItemVerParticipantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVerParticipantesActionPerformed(evt);
+            }
+        });
+        jMenuParticipantesCarrera.add(jMenuItemVerParticipantes);
+
+        jMenuBar1.add(jMenuParticipantesCarrera);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -307,32 +317,52 @@ public class GestionCarreras extends javax.swing.JDialog {
 
     private void jTableCarrerasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableCarrerasFocusGained
         jTableFinalizadas.clearSelection();
-        jButtonAgregarCorredor.setEnabled(true);
-        jButtonAnularCorredor.setEnabled(true);
-        jButtonBajaCarrera.setEnabled(true);
-        jButtonIniciarCarrera.setEnabled(true);
-        jButtonModificar.setEnabled(true);
-        jButtonNuevaCarrera.setEnabled(true);
+        jMenu1.setEnabled(true);
+        jMenu2.setEnabled(true);
     }//GEN-LAST:event_jTableCarrerasFocusGained
 
     private void jTableFinalizadasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableFinalizadasFocusGained
         jTableCarreras.clearSelection();
-        jButtonAgregarCorredor.setEnabled(false);
-        jButtonAnularCorredor.setEnabled(false);
-        jButtonBajaCarrera.setEnabled(false);
-        jButtonIniciarCarrera.setEnabled(false);
-        jButtonModificar.setEnabled(false);
-        jButtonNuevaCarrera.setEnabled(false);
+        jMenu1.setEnabled(false);
+        jMenu2.setEnabled(false);
     }//GEN-LAST:event_jTableFinalizadasFocusGained
 
-    private void jButtonNuevaCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaCarreraActionPerformed
+    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+        if (jComboBoxTablas.getSelectedItem().equals("Sin iniciar")) {
+            if (jComboBoxFiltrar.getSelectedItem().equals("Nombre carrera")) {
+                RowFilter<CarrerasTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
+                sorter.setRowFilter(rf);
+            } else if (jComboBoxFiltrar.getSelectedItem().equals("Lugar")) {
+                RowFilter<CarrerasTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 2);
+                sorter.setRowFilter(rf1);
+            }
+        }
+        if (jComboBoxTablas.getSelectedItem().equals("Finalizadas")) {
+            if (jComboBoxFiltrar.getSelectedItem().equals("Nombre carrera")) {
+                RowFilter<CarrerasTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
+                sorter2.setRowFilter(rf);
+            } else if (jComboBoxFiltrar.getSelectedItem().equals("Lugar")) {
+                RowFilter<CarrerasTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 2);
+                sorter2.setRowFilter(rf1);
+            }
+        }
+        jTextFieldFiltrar.setText("");
+    }//GEN-LAST:event_jButtonFiltrarActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        jTableCarreras.clearSelection();
+        jTableFinalizadas.clearSelection();
+         
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jMenuItemNuevaCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNuevaCarreraActionPerformed
         DatosCarrera datosCarrera = new DatosCarrera(paginaPrincipal, true);
         datosCarrera.setVisible(true);
         ctm.fireTableDataChanged();
-    }//GEN-LAST:event_jButtonNuevaCarreraActionPerformed
+    }//GEN-LAST:event_jMenuItemNuevaCarreraActionPerformed
 
-    private void jButtonBajaCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaCarreraActionPerformed
-        try {
+    private void jMenuItemAnularCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAnularCarreraActionPerformed
+         try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
                 int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar la carrera?", "BORRADO", JOptionPane.YES_NO_OPTION);
@@ -354,10 +384,10 @@ public class GestionCarreras extends javax.swing.JDialog {
         ctm.fireTableDataChanged();
         ctm1.fireTableDataChanged();
         jTableCarreras.clearSelection();
-    }//GEN-LAST:event_jButtonBajaCarreraActionPerformed
+    }//GEN-LAST:event_jMenuItemAnularCarreraActionPerformed
 
-    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        try {
+    private void jMenuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarActionPerformed
+         try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
                 ModificarCarrera modificarCarrera = new ModificarCarrera(paginaPrincipal,
@@ -373,10 +403,28 @@ public class GestionCarreras extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "No ha seleccionado carrera", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableCarreras.clearSelection();
-    }//GEN-LAST:event_jButtonModificarActionPerformed
+    }//GEN-LAST:event_jMenuItemModificarActionPerformed
 
-    private void jButtonAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarCorredorActionPerformed
-        try {
+    private void jMenuItemIniciarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIniciarCarreraActionPerformed
+         try {
+            int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
+            if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
+                Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
+                CarreraEnCurso carreraEnCurso = new CarreraEnCurso(paginaPrincipal, true, carrera);
+                carreraEnCurso.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "CARRERA YA INICIADA O FINALIZADA", "", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+        ctm.fireTableDataChanged();
+        ctm1.fireTableDataChanged();
+        jTableCarreras.clearSelection();
+    }//GEN-LAST:event_jMenuItemIniciarCarreraActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
             if (carrera.getListaParticipantes().size() < carrera.getMaxParticipantes()) {
@@ -404,10 +452,10 @@ public class GestionCarreras extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableCarreras.clearSelection();
-    }//GEN-LAST:event_jButtonAgregarCorredorActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jButtonAnularCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnularCorredorActionPerformed
-        try {
+    private void jMenuItemAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarCorredorActionPerformed
+         try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
                 Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
@@ -421,9 +469,9 @@ public class GestionCarreras extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableCarreras.clearSelection();
-    }//GEN-LAST:event_jButtonAnularCorredorActionPerformed
+    }//GEN-LAST:event_jMenuItemAgregarCorredorActionPerformed
 
-    private void jButtonVerParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerParticipantesActionPerformed
+    private void jMenuItemVerParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVerParticipantesActionPerformed
         try {
             if (jTableCarreras.getSelectedRowCount() > 0) {
                 int seleccion1 = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
@@ -442,71 +490,24 @@ public class GestionCarreras extends javax.swing.JDialog {
         }
         jTableCarreras.clearSelection();
         jTableFinalizadas.clearSelection();
-    }//GEN-LAST:event_jButtonVerParticipantesActionPerformed
-
-    private void jButtonIniciarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarCarreraActionPerformed
-        try {
-            int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
-            if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
-                Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
-                CarreraEnCurso carreraEnCurso = new CarreraEnCurso(paginaPrincipal, true, carrera);
-                carreraEnCurso.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "CARRERA YA INICIADA O FINALIZADA", "", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        ctm.fireTableDataChanged();
-        ctm1.fireTableDataChanged();
-        jTableCarreras.clearSelection();
-    }//GEN-LAST:event_jButtonIniciarCarreraActionPerformed
-
-    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-        if (jComboBoxTablas.getSelectedItem().equals("Sin iniciar")) {
-            if (jComboBoxFiltrar.getSelectedItem().equals("Nombre carrera")) {
-                RowFilter<CarrerasTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
-                sorter.setRowFilter(rf);
-            } else if (jComboBoxFiltrar.getSelectedItem().equals("Lugar")) {
-                RowFilter<CarrerasTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 2);
-                sorter.setRowFilter(rf1);
-            }
-        }
-        if (jComboBoxTablas.getSelectedItem().equals("Finalizadas")) {
-            if (jComboBoxFiltrar.getSelectedItem().equals("Nombre carrera")) {
-                RowFilter<CarrerasTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
-                sorter2.setRowFilter(rf);
-            } else if (jComboBoxFiltrar.getSelectedItem().equals("Lugar")) {
-                RowFilter<CarrerasTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 2);
-                sorter2.setRowFilter(rf1);
-            }
-        }
-        jTextFieldFiltrar.setText("");
-    }//GEN-LAST:event_jButtonFiltrarActionPerformed
-
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        jTableCarreras.clearSelection();
-        jTableFinalizadas.clearSelection();
-        jButtonAgregarCorredor.setEnabled(true);
-        jButtonAnularCorredor.setEnabled(true);
-        jButtonBajaCarrera.setEnabled(true);
-        jButtonIniciarCarrera.setEnabled(true);
-        jButtonModificar.setEnabled(true);
-        jButtonNuevaCarrera.setEnabled(true);
-    }//GEN-LAST:event_jPanel1MouseClicked
+    }//GEN-LAST:event_jMenuItemVerParticipantesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAgregarCorredor;
-    private javax.swing.JButton jButtonAnularCorredor;
-    private javax.swing.JButton jButtonBajaCarrera;
     private javax.swing.JButton jButtonFiltrar;
-    private javax.swing.JButton jButtonIniciarCarrera;
-    private javax.swing.JButton jButtonModificar;
-    private javax.swing.JButton jButtonNuevaCarrera;
-    private javax.swing.JButton jButtonVerParticipantes;
     private javax.swing.JComboBox<String> jComboBoxFiltrar;
     private javax.swing.JComboBox<String> jComboBoxTablas;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemAgregarCorredor;
+    private javax.swing.JMenuItem jMenuItemAnularCarrera;
+    private javax.swing.JMenuItem jMenuItemIniciarCarrera;
+    private javax.swing.JMenuItem jMenuItemModificar;
+    private javax.swing.JMenuItem jMenuItemNuevaCarrera;
+    private javax.swing.JMenuItem jMenuItemVerParticipantes;
+    private javax.swing.JMenu jMenuParticipantesCarrera;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

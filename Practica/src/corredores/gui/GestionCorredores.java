@@ -63,11 +63,13 @@ public class GestionCorredores extends javax.swing.JDialog {
         jTableCorredores = new javax.swing.JTable();
         jComboBoxFiltrar = new javax.swing.JComboBox<>();
         jTextFieldFiltrar = new javax.swing.JTextField();
-        jButtonNuevoCorredor = new javax.swing.JButton();
-        jButtonBajaCorredor = new javax.swing.JButton();
-        jButtonModificar = new javax.swing.JButton();
-        jButtonVerCarrerasCorredor = new javax.swing.JButton();
         jButtonFiltrar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuGestionCorredores = new javax.swing.JMenu();
+        jMenuItemAlta = new javax.swing.JMenuItem();
+        jMenuItemBaja = new javax.swing.JMenuItem();
+        jMenuItemModificacion = new javax.swing.JMenuItem();
+        jMenuItemCarreras = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,37 +91,6 @@ public class GestionCorredores extends javax.swing.JDialog {
         jComboBoxFiltrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtrar por...", "Nombre", "DNI" }));
 
-        jButtonNuevoCorredor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonNuevoCorredor.setText("NUEVO CORREDOR");
-        jButtonNuevoCorredor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNuevoCorredorActionPerformed(evt);
-            }
-        });
-
-        jButtonBajaCorredor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonBajaCorredor.setText("BAJA CORREDOR");
-        jButtonBajaCorredor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBajaCorredorActionPerformed(evt);
-            }
-        });
-
-        jButtonModificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonModificar.setText("MODIFICAR");
-        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarActionPerformed(evt);
-            }
-        });
-
-        jButtonVerCarrerasCorredor.setText("VER CARRERAS CORREDOR");
-        jButtonVerCarrerasCorredor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVerCarrerasCorredorActionPerformed(evt);
-            }
-        });
-
         jButtonFiltrar.setText("FILTRAR");
         jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,76 +104,100 @@ public class GestionCorredores extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonNuevoCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                                .addComponent(jButtonVerCarrerasCorredor))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButtonModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonBajaCorredor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonFiltrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1))
+                .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jButtonFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonVerCarrerasCorredor))
-                    .addComponent(jButtonNuevoCorredor, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonBajaCorredor)
-                    .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jButtonModificar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonFiltrar)))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonFiltrar))
+                .addGap(19, 19, 19))
         );
+
+        jMenuGestionCorredores.setText("    GESTION DE CORREDORES        ");
+
+        jMenuItemAlta.setText("ALTA...");
+        jMenuItemAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAltaActionPerformed(evt);
+            }
+        });
+        jMenuGestionCorredores.add(jMenuItemAlta);
+
+        jMenuItemBaja.setText("BAJA...");
+        jMenuItemBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBajaActionPerformed(evt);
+            }
+        });
+        jMenuGestionCorredores.add(jMenuItemBaja);
+
+        jMenuItemModificacion.setText("MODIFICACION...");
+        jMenuItemModificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModificacionActionPerformed(evt);
+            }
+        });
+        jMenuGestionCorredores.add(jMenuItemModificacion);
+
+        jMenuItemCarreras.setText("SUS CARRERAS...");
+        jMenuItemCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCarrerasActionPerformed(evt);
+            }
+        });
+        jMenuGestionCorredores.add(jMenuItemCarreras);
+
+        jMenuBar1.add(jMenuGestionCorredores);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonNuevoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoCorredorActionPerformed
+    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+        if (jComboBoxFiltrar.getSelectedItem().equals("Nombre")) {
+            RowFilter<CorredoresTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
+            sorter.setRowFilter(rf);
+        } else if (jComboBoxFiltrar.getSelectedItem().equals("DNI")) {
+            RowFilter<CorredoresTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 1);
+            sorter.setRowFilter(rf1);
+        }
+        jTextFieldFiltrar.setText("");
+    }//GEN-LAST:event_jButtonFiltrarActionPerformed
+
+    private void jMenuItemAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaActionPerformed
         DatosCorredor datosCorredor = new DatosCorredor(paginaPrincipal, true);
         datosCorredor.setVisible(true);
         ctm.fireTableDataChanged();
-    }//GEN-LAST:event_jButtonNuevoCorredorActionPerformed
+    }//GEN-LAST:event_jMenuItemAltaActionPerformed
 
-    private void jButtonBajaCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaCorredorActionPerformed
+    private void jMenuItemBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBajaActionPerformed
         try {
             int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
             int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar al corredor?", "BORRADO", JOptionPane.YES_NO_OPTION);
@@ -218,9 +213,9 @@ public class GestionCorredores extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableCorredores.clearSelection();
-    }//GEN-LAST:event_jButtonBajaCorredorActionPerformed
+    }//GEN-LAST:event_jMenuItemBajaActionPerformed
 
-    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+    private void jMenuItemModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificacionActionPerformed
         try {
             int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
             ModificarDatos modificarDatos = new ModificarDatos(paginaPrincipal,
@@ -232,9 +227,9 @@ public class GestionCorredores extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableCorredores.clearSelection();
-    }//GEN-LAST:event_jButtonModificarActionPerformed
+    }//GEN-LAST:event_jMenuItemModificacionActionPerformed
 
-    private void jButtonVerCarrerasCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerCarrerasCorredorActionPerformed
+    private void jMenuItemCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCarrerasActionPerformed
         try {
             int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
             CarrerasDelCorredor carrerasDelCorredor = new CarrerasDelCorredor(paginaPrincipal, true,
@@ -243,27 +238,18 @@ public class GestionCorredores extends javax.swing.JDialog {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonVerCarrerasCorredorActionPerformed
-
-    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-        if (jComboBoxFiltrar.getSelectedItem().equals("Nombre")) {
-            RowFilter<CorredoresTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
-            sorter.setRowFilter(rf);
-        } else if (jComboBoxFiltrar.getSelectedItem().equals("DNI")) {
-            RowFilter<CorredoresTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltrar.getText(), 1);
-            sorter.setRowFilter(rf1);
-        }
-        jTextFieldFiltrar.setText("");
-    }//GEN-LAST:event_jButtonFiltrarActionPerformed
+    }//GEN-LAST:event_jMenuItemCarrerasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonBajaCorredor;
     private javax.swing.JButton jButtonFiltrar;
-    private javax.swing.JButton jButtonModificar;
-    private javax.swing.JButton jButtonNuevoCorredor;
-    private javax.swing.JButton jButtonVerCarrerasCorredor;
     private javax.swing.JComboBox<String> jComboBoxFiltrar;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuGestionCorredores;
+    private javax.swing.JMenuItem jMenuItemAlta;
+    private javax.swing.JMenuItem jMenuItemBaja;
+    private javax.swing.JMenuItem jMenuItemCarreras;
+    private javax.swing.JMenuItem jMenuItemModificacion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCorredores;

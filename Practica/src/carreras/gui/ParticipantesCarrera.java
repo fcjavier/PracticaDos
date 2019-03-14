@@ -40,6 +40,7 @@ public class ParticipantesCarrera extends javax.swing.JDialog {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
+        this.setTitle("PARTICIPANTES EN:  "+carrera.getNomCarrera());
         this.carrera = carrera;
         this.activar = activar;
         jButtonAnularCorredor.setVisible(activar);

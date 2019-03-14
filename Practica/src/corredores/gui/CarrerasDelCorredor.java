@@ -26,6 +26,7 @@ public class CarrerasDelCorredor extends javax.swing.JDialog {
     public CarrerasDelCorredor(java.awt.Frame parent, boolean modal,Corredor corredor) {
         super(parent, modal);
         initComponents();
+        this.setTitle("CARRERAS DE:  "+corredor.getNombre());
         this.corredor=corredor;
         cargarTableModelCarreras();
     }

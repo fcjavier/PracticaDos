@@ -39,6 +39,7 @@ public class CorredoresParaCarrera extends javax.swing.JDialog {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
+        this.setTitle("CORREDORES");
         cargarTableModelCorredoresParaCarrera();
         this.carrera = carrera;
         this.setTitle("CORREDORES PARA  " + carrera.getNomCarrera().toUpperCase());

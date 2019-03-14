@@ -34,6 +34,7 @@ public class CarrerasFinalizadas extends javax.swing.JDialog {
     public CarrerasFinalizadas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("CARRERAS YA FINALIZADAS");
         cargarTabla();
     }
 

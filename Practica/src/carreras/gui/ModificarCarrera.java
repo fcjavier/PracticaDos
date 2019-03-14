@@ -22,6 +22,7 @@ public class ModificarCarrera extends javax.swing.JDialog {
     public ModificarCarrera(java.awt.Frame parent, boolean modal, Carrera carrera) {
         super(parent, modal);
         initComponents();
+        this.setTitle("DATOS CARRERA A MODIFICAR");
         this.c = carrera;
         rellenarCasillas();
     }

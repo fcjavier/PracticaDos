@@ -21,6 +21,7 @@ public class ModificarDatos extends javax.swing.JDialog {
      */
     public ModificarDatos(java.awt.Frame parent, boolean modal, Corredor corredor) {
         super(parent, modal);
+        this.setTitle("DATOS A MODIFICAR");
         initComponents();
         this.c = corredor;
         cargarDatosCorredor(c);

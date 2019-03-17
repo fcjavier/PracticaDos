@@ -1,0 +1,11 @@
+<toc version="1.0">
+    <tocitem text="Ayuda" target="aplicacion">
+        <tocitem text="Página principal" target="ventana_principal"/>      
+        <tocitem text="Gestión de Corredores" target="ventana_corredores"/>
+        <tocitem text="Gestión de Carreras" target="ventana_carreras">
+            <tocitem text="Participantes" target="ventana_participantes"/>
+            <tocitem text="Carrera en curso" target="carrera_en_curso"/> 
+        </tocitem>     
+        <tocitem text="Ver informes" target="ver_informe"/>
+    </tocitem>
+</toc>

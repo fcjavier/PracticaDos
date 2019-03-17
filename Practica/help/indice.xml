@@ -1,0 +1,10 @@
+<Index version="1.0">
+    <Indexitem text="Ayuda" target="aplicacion"/>
+    <Indexitem text="Página Principal" target="ventana_principal"/>    
+    <Indexitem text="Gestión de corredores" target="ventana_corredores"/>
+    <Indexitem text="Gestión de carreras" target="ventana_carreras">
+        <Indexitem text="Participantes" target="vetana_participantes"/>
+        <Indexitem text="Carrera en curso" target="carrera_en_curso"/>
+    </Indexitem>
+    <Indexitem text="Ver informes" target="ver_informe"/> 
+</Index>

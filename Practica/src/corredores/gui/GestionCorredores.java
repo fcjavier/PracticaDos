@@ -238,6 +238,7 @@ public class GestionCorredores extends javax.swing.JDialog {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
         }
+        jTableCorredores.clearSelection();
     }//GEN-LAST:event_jMenuItemCarrerasActionPerformed
 
 

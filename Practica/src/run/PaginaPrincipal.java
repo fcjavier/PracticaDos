@@ -128,6 +128,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel2GestionCarreras.setText("Gestionar Carreras");
 
         jComboBoxLookAndFeel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxLookAndFeel.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxLookAndFeelItemStateChanged(evt);
+            }
+        });
         jComboBoxLookAndFeel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxLookAndFeelActionPerformed(evt);
@@ -286,6 +291,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void jMenuItemModificarLookAndFeelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarLookAndFeelActionPerformed
         jComboBoxLookAndFeel.setVisible(true);
     }//GEN-LAST:event_jMenuItemModificarLookAndFeelActionPerformed
+
+    private void jComboBoxLookAndFeelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxLookAndFeelItemStateChanged
+        jComboBoxLookAndFeel.setVisible(false);
+    }//GEN-LAST:event_jComboBoxLookAndFeelItemStateChanged
 
     /**
      * @param args the command line arguments

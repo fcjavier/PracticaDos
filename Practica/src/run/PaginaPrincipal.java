@@ -27,9 +27,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     LogicaFicherosCSV lf = new LogicaFicherosCSV();
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     LogicaCarreras logCarrera = new LogicaCarreras();
-    final String CORREDORES= "ficheros"+File.separator+"corredores.dat";
-    final String CARRERAS = "ficheros"+File.separator+"carreras.dat";
-    final String FINALIZADAS =  "ficheros"+File.separator+"finalizadas.dat";
+    final String CORREDORES = "ficheros" + File.separator + "corredores.dat";
+    final String CARRERAS = "ficheros" + File.separator + "carreras.dat";
+    final String FINALIZADAS = "ficheros" + File.separator + "finalizadas.dat";
+
     /**
      * Creates new form PaginaPrincipal
      */
@@ -41,15 +42,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         for (LookAndFeelInfo lfi : UIManager.getInstalledLookAndFeels()) {
             dbm.addElement(lfi.getName());
         }
-        jComboBox1.setModel(dbm);
+        jComboBoxLookAndFeel.setModel(dbm);
+        jComboBoxLookAndFeel.setVisible(false);
     }
 
     public void cargarFicheros() {
         File fCorredores = new File(CORREDORES);
         File fCarreras = new File(CARRERAS);
         File fFinalizadas = new File(FINALIZADAS);
-        //lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("ficheros/corredor.csv"));
-        //logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("ficheros/carreras.csv"));
         if (fCorredores.exists()) {
             lc.cargarListaCorredor(lfo.abrirFicheroLecturaCorredores(CORREDORES));
         }
@@ -62,8 +62,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     public void guardarDatos() {
-        lf.abrirFicheroCSVEscrituraCorredor("ficheros"+File.separator+"corredor.csv", LogicaCorredor.getListaCorredores());
-        lf.abrirFicheroCSVEscrituraCarrera("ficheros"+File.separator+"carreras.csv", LogicaCarreras.getListaCarreras());
+        lf.abrirFicheroCSVEscrituraCorredor("ficheros" + File.separator + "corredor.csv", LogicaCorredor.getListaCorredores());
+        lf.abrirFicheroCSVEscrituraCarrera("ficheros" + File.separator + "carreras.csv", LogicaCarreras.getListaCarreras());
         lfo.abrirFicheroObjetosEscrituraCarreras(CARRERAS, LogicaCarreras.getListaCarreras());
         lfo.abrirFicheroObjetosEscrituraCorredores(CORREDORES, LogicaCorredor.getListaCorredores());
         lfo.abrirFicheroObjetosEscrituraCarreras(FINALIZADAS, LogicaCarreras.getListaCarrerasFinalizadas());
@@ -106,7 +106,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelGestionCorredores = new javax.swing.JLabel();
         jLabel2GestionCarreras = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxLookAndFeel = new javax.swing.JComboBox<>();
         jButtonGestionarCorredores = new javax.swing.JButton();
         jButtonGestionarCarreras = new javax.swing.JButton();
         timerData1 = new timersavedata.TimerData();
@@ -114,6 +114,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItemModificarLookAndFeel = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,10 +127,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel2GestionCarreras.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel2GestionCarreras.setText("Gestionar Carreras");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxLookAndFeel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxLookAndFeel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxLookAndFeelActionPerformed(evt);
             }
         });
 
@@ -172,7 +174,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxLookAndFeel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(timerData1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(61, Short.MAX_VALUE)
@@ -202,7 +204,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(timerData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxLookAndFeel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelGestionCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,6 +223,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jMenu1.setText("File      ");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("LookAndFeel");
+
+        jMenuItemModificarLookAndFeel.setText("   Modificar");
+        jMenuItemModificarLookAndFeel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModificarLookAndFeelActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemModificarLookAndFeel);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -244,15 +258,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        LookAndFeelInfo lookAndFeel = UIManager.getInstalledLookAndFeels()[jComboBox1.getSelectedIndex()];
+    private void jComboBoxLookAndFeelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLookAndFeelActionPerformed
+        LookAndFeelInfo lookAndFeel = UIManager.getInstalledLookAndFeels()[jComboBoxLookAndFeel.getSelectedIndex()];
         try {
             UIManager.setLookAndFeel(lookAndFeel.getClassName());
             SwingUtilities.updateComponentTreeUI(this);
         } catch (Throwable ex) {
 
         }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxLookAndFeelActionPerformed
 
     private void jButtonGestionarCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarCorredoresActionPerformed
         GestionCorredores gestionCorredores = new GestionCorredores(this, true);
@@ -265,9 +279,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGestionarCarrerasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       CarrerasFinalizadas carrerasFinalizadas = new CarrerasFinalizadas(this, true);
+        CarrerasFinalizadas carrerasFinalizadas = new CarrerasFinalizadas(this, true);
         carrerasFinalizadas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItemModificarLookAndFeelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarLookAndFeelActionPerformed
+        jComboBoxLookAndFeel.setVisible(true);
+    }//GEN-LAST:event_jMenuItemModificarLookAndFeelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,12 +326,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonGestionarCarreras;
     private javax.swing.JButton jButtonGestionarCorredores;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxLookAndFeel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2GestionCarreras;
     private javax.swing.JLabel jLabelGestionCorredores;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemModificarLookAndFeel;
     private javax.swing.JPanel jPanel1;
     private timersavedata.TimerData timerData1;
     // End of variables declaration//GEN-END:variables

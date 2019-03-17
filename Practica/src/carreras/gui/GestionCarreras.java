@@ -90,8 +90,8 @@ public class GestionCarreras extends javax.swing.JDialog {
         jMenuItemModificar = new javax.swing.JMenuItem();
         jMenuItemIniciarCarrera = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemAgregarCorredor = new javax.swing.JMenuItem();
+        jMenuItemAnularCorredor = new javax.swing.JMenuItem();
         jMenuParticipantesCarrera = new javax.swing.JMenu();
         jMenuItemVerParticipantes = new javax.swing.JMenuItem();
 
@@ -254,15 +254,6 @@ public class GestionCarreras extends javax.swing.JDialog {
         jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jMenu2.setOpaque(true);
 
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jMenuItem1.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItem1.text")); // NOI18N
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem1);
-
         jMenuItemAgregarCorredor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItemAgregarCorredor.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItemAgregarCorredor.text")); // NOI18N
         jMenuItemAgregarCorredor.addActionListener(new java.awt.event.ActionListener() {
@@ -271,6 +262,15 @@ public class GestionCarreras extends javax.swing.JDialog {
             }
         });
         jMenu2.add(jMenuItemAgregarCorredor);
+
+        jMenuItemAnularCorredor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItemAnularCorredor.setText(org.openide.util.NbBundle.getMessage(GestionCarreras.class, "GestionCarreras.jMenuItemAnularCorredor.text")); // NOI18N
+        jMenuItemAnularCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAnularCorredorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemAnularCorredor);
 
         jMenuBar1.add(jMenu2);
 
@@ -352,7 +352,7 @@ public class GestionCarreras extends javax.swing.JDialog {
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         jTableCarreras.clearSelection();
         jTableFinalizadas.clearSelection();
-         
+
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jMenuItemNuevaCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNuevaCarreraActionPerformed
@@ -362,7 +362,7 @@ public class GestionCarreras extends javax.swing.JDialog {
     }//GEN-LAST:event_jMenuItemNuevaCarreraActionPerformed
 
     private void jMenuItemAnularCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAnularCarreraActionPerformed
-         try {
+        try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
                 int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar la carrera?", "BORRADO", JOptionPane.YES_NO_OPTION);
@@ -387,7 +387,7 @@ public class GestionCarreras extends javax.swing.JDialog {
     }//GEN-LAST:event_jMenuItemAnularCarreraActionPerformed
 
     private void jMenuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarActionPerformed
-         try {
+        try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
                 ModificarCarrera modificarCarrera = new ModificarCarrera(paginaPrincipal,
@@ -406,7 +406,7 @@ public class GestionCarreras extends javax.swing.JDialog {
     }//GEN-LAST:event_jMenuItemModificarActionPerformed
 
     private void jMenuItemIniciarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIniciarCarreraActionPerformed
-         try {
+        try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
                 Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
@@ -423,8 +423,8 @@ public class GestionCarreras extends javax.swing.JDialog {
         jTableCarreras.clearSelection();
     }//GEN-LAST:event_jMenuItemIniciarCarreraActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-         try {
+    private void jMenuItemAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarCorredorActionPerformed
+        try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
             if (carrera.getListaParticipantes().size() < carrera.getMaxParticipantes()) {
@@ -452,15 +452,17 @@ public class GestionCarreras extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableCarreras.clearSelection();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemAgregarCorredorActionPerformed
 
-    private void jMenuItemAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarCorredorActionPerformed
-         try {
+    private void jMenuItemAnularCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAnularCorredorActionPerformed
+        try {
             int seleccion = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
             if (!LogicaCarreras.getListaCarreras().get(seleccion).isIniciada()) {
                 Carrera carrera = LogicaCarreras.getListaCarreras().get(seleccion);
-                ParticipantesCarrera participantesCarrera = new ParticipantesCarrera(paginaPrincipal, true, carrera, true);
-                participantesCarrera.setVisible(true);
+                //ParticipantesCarrera participantesCarrera = new ParticipantesCarrera(paginaPrincipal, true, carrera, true);
+                // participantesCarrera.setVisible(true);
+                AnularParticipante anularParticipante = new AnularParticipante(paginaPrincipal, true, carrera);
+                anularParticipante.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "No se puede anular corredores\n"
                         + "la carrera está iniciada o finalizada", "", JOptionPane.INFORMATION_MESSAGE);
@@ -469,7 +471,7 @@ public class GestionCarreras extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "No hay selección.", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableCarreras.clearSelection();
-    }//GEN-LAST:event_jMenuItemAgregarCorredorActionPerformed
+    }//GEN-LAST:event_jMenuItemAnularCorredorActionPerformed
 
     private void jMenuItemVerParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVerParticipantesActionPerformed
         try {
@@ -500,9 +502,9 @@ public class GestionCarreras extends javax.swing.JDialog {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAgregarCorredor;
     private javax.swing.JMenuItem jMenuItemAnularCarrera;
+    private javax.swing.JMenuItem jMenuItemAnularCorredor;
     private javax.swing.JMenuItem jMenuItemIniciarCarrera;
     private javax.swing.JMenuItem jMenuItemModificar;
     private javax.swing.JMenuItem jMenuItemNuevaCarrera;

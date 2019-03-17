@@ -42,7 +42,7 @@ public class CorredoresTableModel extends AbstractTableModel {
             case 3:
                 return listaCorredores.get(row).getDireccion();
             case 4:
-                return listaCorredores.get(row).getTelefono();           
+                return listaCorredores.get(row).getTelefono();
         }
         return null;
     }

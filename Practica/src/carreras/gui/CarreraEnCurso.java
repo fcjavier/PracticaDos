@@ -35,7 +35,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     public CarreraEnCurso(java.awt.Frame parent, boolean modal, Carrera carrera) {
         super(parent, modal);
         initComponents();
-        this.setTitle("CARRERA EN CURSO");
+        this.setTitle("CARRERA EN CURSO:  " + carrera.getNomCarrera().toUpperCase());
         this.carrera = carrera;
         cargarTable();
         anularOpciones();

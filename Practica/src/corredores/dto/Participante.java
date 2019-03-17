@@ -32,7 +32,7 @@ public class Participante implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public String getDorsal() {
         return dorsal;
     }
@@ -56,11 +56,10 @@ public class Participante implements Serializable {
     public void setCorredor(Corredor corredor) {
         this.corredor = corredor;
     }
-    
- 
+
     @Override
     public String toString() {
-        return "Participante: nombre= " + corredor.getNombre()+ ", dorsal= " + dorsal + ", tiempo= " + tiempo;
+        return "Participante: nombre= " + corredor.getNombre() + ", dorsal= " + dorsal + ", tiempo= " + tiempo;
     }
 
 }

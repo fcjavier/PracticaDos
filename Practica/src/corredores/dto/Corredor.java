@@ -18,6 +18,7 @@ public class Corredor implements Serializable {
     private String direccion;
     private String telefono;
     private List<Carrera> inscripciones;
+
     //Constructores
     public Corredor() {
     }
@@ -84,7 +85,7 @@ public class Corredor implements Serializable {
     public String toString() {
         return "Corredor: nombre= " + nombre + ", dni= " + dni + ", fechaNacimiento= "
                 + fechaNacimiento + ", direccion= " + direccion + ", telefono= "
-                + telefono + ", inscripciones= " + inscripciones;
+                + telefono;
     }
 
 }

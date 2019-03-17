@@ -1,5 +1,6 @@
 package carreras.dto;
 
+import corredores.dto.Corredor;
 import corredores.dto.Participante;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class Carrera implements Serializable {
     private boolean iniciada;
     private List<Participante> listaParticipantes;
     private List<Integer> listaDorsales;
+    private List<Corredor> inscritos;
 
     //Constructores
     public Carrera() {
@@ -31,6 +33,7 @@ public class Carrera implements Serializable {
         this.maxParticipantes = maxParticipantes;
         this.iniciada = false;
         this.listaParticipantes = new ArrayList<Participante>();
+        this.inscritos = new ArrayList<Corredor>();
         this.cargarDorsales(maxParticipantes);
     }
 
@@ -94,13 +97,20 @@ public class Carrera implements Serializable {
     public List<Integer> getListaDorsales() {
         return listaDorsales;
     }
-    
+
+    public List<Corredor> getInscritos() {
+        return inscritos;
+    }
+
+    public void setInscritos(List<Corredor> inscritos) {
+        this.inscritos = inscritos;
+    }
 
     @Override
     public String toString() {
         return "Carrera: nombre= " + nomCarrera + ", fechaCarrera= " + fechaCarrera
                 + ", lugar= " + lugar + ", maxParticipantes= " + maxParticipantes
-                + ", estado= " + iniciada + ", listaParticipantes= " + listaParticipantes;
+                + ", estado= " + iniciada;
     }
 
 }

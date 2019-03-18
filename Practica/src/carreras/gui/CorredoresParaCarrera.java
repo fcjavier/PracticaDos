@@ -109,6 +109,7 @@ public class CorredoresParaCarrera extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(815, 489));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 

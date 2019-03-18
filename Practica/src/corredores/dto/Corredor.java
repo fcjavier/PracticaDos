@@ -81,11 +81,4 @@ public class Corredor implements Serializable {
         this.inscripciones = inscripciones;
     }
 
-    @Override
-    public String toString() {
-        return "Corredor: nombre= " + nombre + ", dni= " + dni + ", fechaNacimiento= "
-                + fechaNacimiento + ", direccion= " + direccion + ", telefono= "
-                + telefono;
-    }
-
 }

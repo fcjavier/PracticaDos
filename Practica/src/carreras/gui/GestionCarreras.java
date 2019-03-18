@@ -96,6 +96,7 @@ public class GestionCarreras extends javax.swing.JDialog {
         jMenuItemVerParticipantes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(807, 415));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,6 +202,8 @@ public class GestionCarreras extends javax.swing.JDialog {
                     .addComponent(jButtonFiltrar))
                 .addGap(24, 24, 24))
         );
+
+        jMenuBar1.setBackground(new java.awt.Color(153, 153, 255));
 
         jMenu1.setBackground(new java.awt.Color(204, 204, 255));
         jMenu1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));

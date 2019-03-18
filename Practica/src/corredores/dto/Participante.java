@@ -57,9 +57,4 @@ public class Participante implements Serializable {
         this.corredor = corredor;
     }
 
-    @Override
-    public String toString() {
-        return "Participante: nombre= " + corredor.getNombre() + ", dorsal= " + dorsal + ", tiempo= " + tiempo;
-    }
-
 }

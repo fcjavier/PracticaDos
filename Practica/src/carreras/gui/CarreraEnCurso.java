@@ -51,6 +51,9 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         sorter.setSortKeys(sortKeys);
     }
 
+    /*Método que anula los botones que no se necesitan durante
+    la realización de la carrera.
+     */
     public void anularOpciones() {
         jButtonDetener.setEnabled(false);
         jButtonReiniciar.setEnabled(false);
@@ -58,6 +61,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
 
     }
 
+    //Método para la activación de los botones anulados.
     private boolean finDeCarrera(int n) {
         boolean fin = false;
         if (n == carrera.getMaxParticipantes()) {
@@ -91,6 +95,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(607, 355));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 

@@ -12,7 +12,7 @@
             </Property>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAyuda">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sistema de ayuda...  "/>
               </Properties>
@@ -39,6 +39,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[594, 390]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -220,7 +223,7 @@
             </Property>
             <Property name="formato24h" type="boolean" value="true"/>
             <Property name="salvar" type="timersavedata.Save" editor="timersavedata.SavePropertyEditorSupport">
-              <SerializedValue value="-84,-19,0,5,115,114,0,18,116,105,109,101,114,115,97,118,101,100,97,116,97,46,83,97,118,101,57,-65,46,114,59,85,43,-69,2,0,2,90,0,6,97,99,116,105,118,111,73,0,6,116,105,101,109,112,111,120,112,1,0,0,0,10"/>
+              <SerializedValue value="-84,-19,0,5,115,114,0,18,116,105,109,101,114,115,97,118,101,100,97,116,97,46,83,97,118,101,57,-65,46,114,59,85,43,-69,2,0,2,90,0,6,97,99,116,105,118,111,73,0,6,116,105,101,109,112,111,120,112,1,0,0,0,6"/>
             </Property>
           </Properties>
           <AccessibilityProperties>

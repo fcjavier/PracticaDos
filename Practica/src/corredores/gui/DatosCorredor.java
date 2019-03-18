@@ -12,7 +12,6 @@ import logicaParaFicheros.LogicaFicherosCSV;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import run.PaginaPrincipal;
- 
 
 /**
  *
@@ -22,12 +21,13 @@ public class DatosCorredor extends javax.swing.JDialog {
 
     LogicaCorredor lc = new LogicaCorredor();
     LogicaFicherosCSV lf = new LogicaFicherosCSV();
-   // LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
+    // LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     private PaginaPrincipal paginaPrincipal;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
      * Creates new form DatosCorredor
+     *
      * @param parent
      * @param modal
      */
@@ -43,7 +43,7 @@ public class DatosCorredor extends javax.swing.JDialog {
         group.add(jTextFieldTelefono, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_NUMBER,
                 StringValidators.maxLength(9), StringValidators.minLength(9));
         group.add(jTextFieldDireccion, StringValidators.REQUIRE_NON_EMPTY_STRING);
-        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.maxLength(9),
+        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.maxLength(9),
                 StringValidators.minLength(9));
         group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
         validationPanelCorredor.addChangeListener(new ChangeListener() {
@@ -103,6 +103,7 @@ public class DatosCorredor extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
+        setMinimumSize(new java.awt.Dimension(474, 362));
         setResizable(false);
 
         jPanelDatosCorredor.setBackground(new java.awt.Color(0, 204, 153));
@@ -212,7 +213,7 @@ public class DatosCorredor extends javax.swing.JDialog {
                 .addComponent(jButtonRegistrarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(validationPanelCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -241,12 +242,12 @@ public class DatosCorredor extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "DNI INCORRECTO", "", JOptionPane.WARNING_MESSAGE);
             registrar = false;
         }
-        Date hoy=new Date();
+        Date hoy = new Date();
         hoy.getTime();
-        Date fech=(Date) jSpinnerFecha.getValue();
-        if(fech.after(hoy)){
+        Date fech = (Date) jSpinnerFecha.getValue();
+        if (fech.after(hoy)) {
             JOptionPane.showMessageDialog(this, "COMPRUEBE LA FECHAS DE NACIMIENTO");
-            registrar=false;
+            registrar = false;
         }
         if (!lc.comprobarTelefono(jTextFieldTelefono.getText())) {
             JOptionPane.showMessageDialog(this, "TELÉFONO INCORRECTO", "", JOptionPane.WARNING_MESSAGE);
@@ -254,7 +255,7 @@ public class DatosCorredor extends javax.swing.JDialog {
         }
         if (registrar) {
             crearCorredor();
-            lf.abrirFicheroCSVEscrituraCorredor("ficheros"+File.separator+"corredor.csv", LogicaCorredor.getListaCorredores());
+            lf.abrirFicheroCSVEscrituraCorredor("ficheros" + File.separator + "corredor.csv", LogicaCorredor.getListaCorredores());
             //lfo.abrirFicheroObjetosEscrituraCorredores("ficheros/corredores.dat", LogicaCorredor.getListaCorredores());
             int opcion = JOptionPane.showConfirmDialog(this, "NUEVO CORREDOR", "REGISTRO REALIZADO", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.NO_OPTION) {
@@ -265,7 +266,7 @@ public class DatosCorredor extends javax.swing.JDialog {
                 jTextFieldNombre.setText("");
                 jTextFieldDNI.setText("");
                 jTextFieldDireccion.setText("");
-                jTextFieldTelefono.setText("");                
+                jTextFieldTelefono.setText("");
             }
         }
 

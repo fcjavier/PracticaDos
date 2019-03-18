@@ -72,6 +72,7 @@ public class GestionCorredores extends javax.swing.JDialog {
         jMenuItemCarreras = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(575, 370));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 

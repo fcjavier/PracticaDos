@@ -17,21 +17,23 @@ public class CarrerasDelCorredor extends javax.swing.JDialog {
     CarrerasTableModel ctm;
     TableRowSorter<CarrerasTableModel> sorter;
     Corredor corredor;
+
     /**
      * Creates new form CarrerasDelCorredor
+     *
      * @param parent
      * @param modal
      * @param corredor
      */
-    public CarrerasDelCorredor(java.awt.Frame parent, boolean modal,Corredor corredor) {
+    public CarrerasDelCorredor(java.awt.Frame parent, boolean modal, Corredor corredor) {
         super(parent, modal);
         initComponents();
-        this.setTitle("CARRERAS DE:  "+corredor.getNombre());
-        this.corredor=corredor;
+        this.setTitle("CARRERAS DE:  " + corredor.getNombre());
+        this.corredor = corredor;
         cargarTableModelCarreras();
     }
-    
-        public void cargarTableModelCarreras() {
+
+    public void cargarTableModelCarreras() {
         ctm = new CarrerasTableModel(corredor.getInscripciones());
         jTableCarrerasCorredor.setModel(ctm);
         sorter = new TableRowSorter<>(ctm);
@@ -55,6 +57,7 @@ public class CarrerasDelCorredor extends javax.swing.JDialog {
         jTableCarrerasCorredor = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(403, 308));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -77,7 +80,7 @@ public class CarrerasDelCorredor extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,7 +110,7 @@ public class CarrerasDelCorredor extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

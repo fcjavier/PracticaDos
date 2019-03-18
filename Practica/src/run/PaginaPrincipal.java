@@ -10,6 +10,9 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+import javax.help.HelpSetException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +22,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import logicaParaFicheros.LogicaFicherosCSV;
 import logicaParaFicheros.LogicaFicherosObjetos;
 import org.openide.util.Exceptions;
+import timersavedata.SaveListener;
 
 /**
  *
@@ -39,8 +43,20 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      */
     public PaginaPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
         cargarFicheros();
+        ponerAyuda();
+        cambiarLookAndFeel();
         cerrar();
+        timerData1.addSaveListener(new SaveListener() {
+            @Override
+            public void guardarDatos() {
+                guardarDatos();
+            }
+        });
+    }
+
+    public void cambiarLookAndFeel() {
         DefaultComboBoxModel dbm = new DefaultComboBoxModel();
         for (LookAndFeelInfo lfi : UIManager.getInstalledLookAndFeels()) {
             dbm.addElement(lfi.getName());
@@ -96,7 +112,24 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             System.exit(0);
         }
     }
- 
+
+    private void ponerAyuda() {
+        try {
+            File fichero = new File("JavaHelpCarreraDos" + File.separator + "src" + File.separator + "Help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+            hb.enableHelpOnButton(jMenuItemAyuda, "aplicacion", helpset);
+            hb.enableHelpKey(getRootPane(), "aplicacion", helpset);
+            hb.enableHelpKey(jButtonGestionarCorredores, "ventana_corredores", helpset);
+            hb.enableHelpKey(jButtonGestionarCarreras, "ventana_carreras", helpset);
+            hb.enableHelpKey(jButtonFinalizadas, "ver_informe", helpset);
+        } catch (MalformedURLException ex) {
+            Exceptions.printStackTrace(ex);
+        } catch (HelpSetException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,11 +151,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButtonFinalizadas = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAyuda = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemAyuda = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemModificarLookAndFeel = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(594, 390));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -233,8 +267,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jMenuAyuda.setText("Ayuda    ");
         jMenuAyuda.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jMenuItem1.setText("Sistema de ayuda...  ");
-        jMenuAyuda.add(jMenuItem1);
+        jMenuItemAyuda.setText("Sistema de ayuda...  ");
+        jMenuAyuda.add(jMenuItemAyuda);
 
         jMenuBar1.add(jMenuAyuda);
 
@@ -351,7 +385,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemAyuda;
     private javax.swing.JMenuItem jMenuItemModificarLookAndFeel;
     private javax.swing.JPanel jPanel1;
     private timersavedata.TimerData timerData1;

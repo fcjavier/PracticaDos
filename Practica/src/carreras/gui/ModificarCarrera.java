@@ -73,6 +73,7 @@ public class ModificarCarrera extends javax.swing.JDialog {
         jButtonModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(505, 252));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 153));
@@ -124,7 +125,7 @@ public class ModificarCarrera extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldFecha)
                             .addComponent(jTextFieldLugar)
-                            .addComponent(jTextFieldMaxParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                            .addComponent(jTextFieldMaxParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(18, 18, 18))
         );

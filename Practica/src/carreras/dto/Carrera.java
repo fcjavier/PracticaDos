@@ -106,11 +106,4 @@ public class Carrera implements Serializable {
         this.inscritos = inscritos;
     }
 
-    @Override
-    public String toString() {
-        return "Carrera: nombre= " + nomCarrera + ", fechaCarrera= " + fechaCarrera
-                + ", lugar= " + lugar + ", maxParticipantes= " + maxParticipantes
-                + ", estado= " + iniciada;
-    }
-
 }

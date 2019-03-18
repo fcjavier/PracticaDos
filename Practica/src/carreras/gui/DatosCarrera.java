@@ -114,6 +114,7 @@ public class DatosCarrera extends javax.swing.JDialog {
         validationPanelCarreras = new org.netbeans.validation.api.ui.swing.ValidationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(510, 355));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 153));
